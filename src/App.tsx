@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import "./App.css";
 import { Card, ClickableCard, Title } from "./components/Card";
+import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
 import SectionHeader from "./components/SectionHeader";
@@ -15,6 +16,10 @@ function App() {
       <MainLayout>a bunch of stuff here</MainLayout>
       <SectionHeader>really cool</SectionHeader>
       <MainLayout>
+        <div style={{ marginBottom: "1rem" }}>
+          <TextInput placeholder="Search..." />
+        </div>
+
         <Card>
           <Title>Normal Card</Title>
           <p>im just some normal text</p>

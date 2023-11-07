@@ -1,20 +1,5 @@
 @import url("./base.css");
 
-.we-text-input {
-  border: none;
-  border-radius: var(--radius);
-  width: 100%;
-
-  padding: calc(var(--textFrameY) - var(--fieldBorderWidth)) var(--textFrameY);
-
-  color: var(--c-text-dark-color);
-  background-color: var(--c-item-background);
-}
-
-.we-text-input::placeholder {
-  color: var(--c-text-dark-color);
-}
-
 .we-option-btn {
   border: none;
   border-radius: var(--radius);

@@ -1,0 +1,14 @@
+.text-input {
+  border: none;
+  border-radius: var(--radius);
+  width: 100%;
+
+  padding: calc(var(--textFrameY) - var(--fieldBorderWidth)) var(--textFrameY);
+
+  color: var(--c-text-dark-color);
+  background-color: var(--c-item-background);
+}
+
+.text-input::placeholder {
+  color: var(--c-text-dark-color);
+}
