@@ -1,53 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>We Eat</title>
-    <!-- <link rel="stylesheet" href="./assets/css/base.css" /> -->
-    <link rel="stylesheet" href="./assets/css/components.css" />
-  </head>
-  <body>
-    <!-- headers -->
-    <!-- section header -->
-    <div class="we-header">
-      <h2>Food Preferences</h2>
-    </div>
 
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>We Eat</title>
+  <!-- <link rel="stylesheet" href="./assets/css/base.css" /> -->
+  <link rel="stylesheet" href="./assets/css/components.css" />
+</head>
+
+<body>
+  <!-- headers -->
+  <!-- section header -->
+  <div class="we-header">
+    <h2>Food Preferences</h2>
+  </div>
+
+  <main>
     <center>
-        <p>Choose some categories to get started!</p>
+      <p>Choose some categories to get started!</p>
     </center>
-      <!-- forms -->
-      <input class="we-text-input" type="text" placeholder="Search...." />
+    <!-- forms -->
+    <input class="we-text-input" type="text" placeholder="Search...." />
 
-      <!-- buttons -->
-      <body>
-        <div class="button-box">
-            <button class="we-button-wide">Burgers</button>
-            <button class="we-button-wide">Chinese</button>
-            <button class="we-button-wide">Vegetarian</button>
-            <button class="we-button-wide">Pizza</button>
-            <button class="we-button-wide">Mexican</button>
-            <button class="we-button-wide">Italian</button>
-            <button class="we-button-wide">Gluten Free</button>
-            <button class="we-button-wide">Desert</button>
-            <button class="we-button-wide">Vegan</button>
-            <button class="we-button-wide">Chicken</button>
-            <button class="we-button-wide">Indian</button>
-            <button class="we-button-wide">Coffee</button>
-        </div>
+    <!-- buttons -->
+
+    <body>
+      <ul class="we-list">
+        <li><input class="we-option-btn" type="button" value="Burgers" onclick="storePreference('Burgers')"></li>
+        <li><input class="we-option-btn" type="button" value="Chinese" onclick="storePreference('Chinese')"></li>
+        <li><input class="we-option-btn" type="button" value="Vegetarian" onclick="storePreference('Vegetarian')"></li>
+        <li><input class="we-option-btn" type="button" value="Pizza" onclick="storePreference('Pizza')"></li>
+        <li><input class="we-option-btn" type="button" value="Mexican" onclick="storePreference('Mexican')"></li>
+        <li><input class="we-option-btn" type="button" value="Italian" onclick="storePreference('Italian')"></li>
+        <li><input class="we-option-btn" type="button" value="Gluten Free" onclick="storePreference('Gluten Free')">
+        </li>
+        <li><input class="we-option-btn" type="button" value="Desert" onclick="storePreference('Desert')"></li>
+        <li><input class="we-option-btn" type="button" value="Vegan" onclick="storePreference('Vegan')"></li>
+        <li><input class="we-option-btn" type="button" value="Chicken" onclick="storePreference('Chicken')"></li>
+        <li><input class="we-option-btn" type="button" value="Indian" onclick="storePreference('Indian')"></li>
+        <li><input class="we-option-btn" type="button" value="Coffee" onclick="storePreference('Coffee')"></li>
+      </ul>
+      <script src="./scripts/toggle.js"></script>
+      <script>
+        // JavaScript to store food preferences in an array
+        const foodPreferences = [];
+
+        function storePreference(preference) {
+          foodPreferences.push(preference);
+          console.log(`Added preference: ${preference}`);
+        }
+      </script>
     </body>
-      
 
 
 
-    </main>
 
-    <!-- floating footer -->
-    <footer class="we-floating-footer">
-      <button class="we-button we-button-outlined">Back</button>
-      <button class="we-button">Next</button>
-    </footer>
-  </body>
+  </main>
+
+  <!-- floating footer -->
+  <footer class="we-floating-footer">
+    <button class="we-button we-button-outlined">Back</button>
+    <a class="we-button" href="transport.html">Next</a>
+  </footer>
+</body>
+
 </html>
