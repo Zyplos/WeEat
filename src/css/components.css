@@ -96,15 +96,6 @@
   justify-content: space-between;
 }
 
-.we-card-clickable {
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.we-card-clickable:hover .we-card {
-  background-color: var(--c-item-hover);
-}
-
 .we-acrylic-button {
   border: none;
   border-radius: var(--radius);

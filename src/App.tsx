@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import Card from "./components/Card";
+import { Card, ClickableCard } from "./components/Card";
 import CardTitle from "./components/CardTitle";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
@@ -17,13 +17,13 @@ function App() {
       <SectionHeader>really cool</SectionHeader>
       <MainLayout>
         <Card>
-          <CardTitle>I'm a title</CardTitle>
+          <CardTitle>Normal Card</CardTitle>
           <p>im just some normal text</p>
         </Card>
 
         <Card>
           <WidthSpaced>
-            <CardTitle>Five Guys</CardTitle>
+            <CardTitle>Card with Go To Icon</CardTitle>
             <span>➤</span>
           </WidthSpaced>
 
@@ -33,13 +33,33 @@ function App() {
 
         <Card variant="active">
           <WidthSpaced>
-            <CardTitle>Five Guys</CardTitle>
+            <CardTitle>Active Card</CardTitle>
             <span>➤</span>
           </WidthSpaced>
 
           <p>0.42 miles away</p>
           <p>5 minute commute time</p>
         </Card>
+
+        <ClickableCard href="https://google.com" target="_blank">
+          <WidthSpaced>
+            <CardTitle>Clickable Card</CardTitle>
+            <span>➤</span>
+          </WidthSpaced>
+
+          <p>0.42 miles away</p>
+          <p>5 minute commute time</p>
+        </ClickableCard>
+
+        <ClickableCard href="https://google.com" target="_blank" variant="active">
+          <WidthSpaced>
+            <CardTitle>Active Clickable Card</CardTitle>
+            <span>➤</span>
+          </WidthSpaced>
+
+          <p>0.42 miles away</p>
+          <p>5 minute commute time</p>
+        </ClickableCard>
       </MainLayout>
     </>
   );
