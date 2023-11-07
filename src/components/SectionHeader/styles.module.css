@@ -1,0 +1,7 @@
+.we-section-header {
+  background-color: var(--c-header-background);
+  margin-top: var(--space-l);
+  margin-bottom: var(--space-l);
+
+  padding: var(--space-xl);
+}

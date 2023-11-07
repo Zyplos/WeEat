@@ -102,11 +102,6 @@ a {
   color: var(--c-primary);
 }
 
-main {
-  padding: var(--space-xl);
-  margin-top: var(--space-m);
-}
-
 #acrylic-testing {
   background-image: url("../test2.png");
 }
