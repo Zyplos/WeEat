@@ -44,11 +44,19 @@
       <script src="./scripts/toggle.js"></script>
       <script>
         // JavaScript to store food preferences in an array
-        const foodPreferences = [];
+        const foodPreferences = new Map();
 
         function storePreference(preference) {
-          foodPreferences.push(preference);
-          console.log(`Added preference: ${preference}`);
+          // Check if the preference is already in the Map
+          if (foodPreferences.has(preference)) {
+            // If it's already in the Map, remove it (toggle the selection)
+            foodPreferences.delete(preference);
+            console.log(`Removed preference: ${preference}`);
+          } else {
+            // If it's not in the Map, add it
+            foodPreferences.set(preference, true);
+            console.log(`Added preference: ${preference}`);
+          }
         }
       </script>
     </body>
