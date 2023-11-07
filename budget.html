@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeEat: Budget</title>
     <link rel="stylesheet" href="./assets/css/components.css" />
+    <script src="scripts/preference.js"></script>
 </head>
 <body>
     <!-- section header -->
@@ -14,18 +15,18 @@
 
     <main>
         <ul class="we-list">
-            <li><input class="we-option-btn" type="button" value="$" /></li>
-            <li><input class="we-option-btn" type="button" value="$$" /></li>
-            <li><input class="we-option-btn" type="button" value="$$$" /></li>
-            <li><input class="we-option-btn" type="button" value="$$$$" /></li>
-            <li><input class="we-option-btn" type="button" value="$$$$$" /></li>
+            <li><input class="we-option-btn" type="button" value="$" onclick="storeBudget('$')" /></li>
+            <li><input class="we-option-btn" type="button" value="$$" onclick="storeBudget('$$')" /></li>
+            <li><input class="we-option-btn" type="button" value="$$$" onclick="storeBudget('$$$')" /></li>
+            <li><input class="we-option-btn" type="button" value="$$$$" onclick="storeBudget('$$$$')" /></li>
+            <li><input class="we-option-btn" type="button" value="$$$$$" onclick="storeBudget('$$$$$')" /></li>
         </ul>
         <script src="./scripts/toggle.js"></script>
     </main>
     <!-- floating footer -->
     <footer class="we-floating-footer">
         <a class="we-button we-button-outlined" href="time.html">Back</a>
-        <a class="we-button" href="">Next</a>
+        <button class="we-button" onclick="testPreferences()">Next</button>
     </footer>
 </body>
 </html>

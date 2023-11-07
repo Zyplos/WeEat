@@ -7,6 +7,7 @@
   <title>We Eat</title>
   <!-- <link rel="stylesheet" href="./assets/css/base.css" /> -->
   <link rel="stylesheet" href="./assets/css/components.css" />
+  <script src="scripts/preference.js"></script>
 </head>
 
 <body>
@@ -27,40 +28,22 @@
 
     <body>
       <ul class="we-list">
-        <li><input class="we-option-btn" type="button" value="Burgers" onclick="storePreference('Burgers')"></li>
-        <li><input class="we-option-btn" type="button" value="Chinese" onclick="storePreference('Chinese')"></li>
-        <li><input class="we-option-btn" type="button" value="Vegetarian" onclick="storePreference('Vegetarian')"></li>
-        <li><input class="we-option-btn" type="button" value="Pizza" onclick="storePreference('Pizza')"></li>
-        <li><input class="we-option-btn" type="button" value="Mexican" onclick="storePreference('Mexican')"></li>
-        <li><input class="we-option-btn" type="button" value="Italian" onclick="storePreference('Italian')"></li>
-        <li><input class="we-option-btn" type="button" value="Gluten Free" onclick="storePreference('Gluten Free')">
+        <li><input class="we-option-btn" type="button" value="Burgers" onclick="storeFood('Burgers')"></li>
+        <li><input class="we-option-btn" type="button" value="Chinese" onclick="storeFood('Chinese')"></li>
+        <li><input class="we-option-btn" type="button" value="Vegetarian" onclick="storeFood('Vegetarian')"></li>
+        <li><input class="we-option-btn" type="button" value="Pizza" onclick="storeFood('Pizza')"></li>
+        <li><input class="we-option-btn" type="button" value="Mexican" onclick="storeFood('Mexican')"></li>
+        <li><input class="we-option-btn" type="button" value="Italian" onclick="storeFood('Italian')"></li>
+        <li><input class="we-option-btn" type="button" value="Gluten Free" onclick="storeFood('Gluten Free')">
         </li>
-        <li><input class="we-option-btn" type="button" value="Desert" onclick="storePreference('Desert')"></li>
-        <li><input class="we-option-btn" type="button" value="Vegan" onclick="storePreference('Vegan')"></li>
-        <li><input class="we-option-btn" type="button" value="Chicken" onclick="storePreference('Chicken')"></li>
-        <li><input class="we-option-btn" type="button" value="Indian" onclick="storePreference('Indian')"></li>
-        <li><input class="we-option-btn" type="button" value="Coffee" onclick="storePreference('Coffee')"></li>
+        <li><input class="we-option-btn" type="button" value="Desert" onclick="storeFood('Desert')"></li>
+        <li><input class="we-option-btn" type="button" value="Vegan" onclick="storeFood('Vegan')"></li>
+        <li><input class="we-option-btn" type="button" value="Chicken" onclick="storeFood('Chicken')"></li>
+        <li><input class="we-option-btn" type="button" value="Indian" onclick="storeFood('Indian')"></li>
+        <li><input class="we-option-btn" type="button" value="Coffee" onclick="storeFood('Coffee')"></li>
       </ul>
       <script src="./scripts/select.js"></script>
-      <script>
-        // JavaScript to store food preferences in an array
-        const foodPreferences = new Map();
-
-        function storePreference(preference) {
-          // Check if the preference is already in the Map
-          if (foodPreferences.has(preference)) {
-            // If it's already in the Map, remove it (toggle the selection)
-            foodPreferences.delete(preference);
-            console.log(`Removed preference: ${preference}`);
-          } else {
-            // If it's not in the Map, add it
-            foodPreferences.set(preference, true);
-            console.log(`Added preference: ${preference}`);
-          }
-        }
-      </script>
     </body>
-
 
 
 

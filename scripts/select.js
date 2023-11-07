@@ -4,10 +4,10 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
     if (button.classList.contains('active')) {
       button.classList.remove('active');
-      console.log('removed');
+      // console.log('removed');
     } else {
       button.classList.add('active');
-      console.log('added');
+      // console.log('added');
     }
   });
 });
