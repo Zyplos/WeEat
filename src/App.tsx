@@ -1,7 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import { Card, ClickableCard } from "./components/Card";
-import CardTitle from "./components/CardTitle";
+import { Card, ClickableCard, Title } from "./components/Card";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
 import SectionHeader from "./components/SectionHeader";
@@ -17,13 +16,13 @@ function App() {
       <SectionHeader>really cool</SectionHeader>
       <MainLayout>
         <Card>
-          <CardTitle>Normal Card</CardTitle>
+          <Title>Normal Card</Title>
           <p>im just some normal text</p>
         </Card>
 
         <Card>
           <WidthSpaced>
-            <CardTitle>Card with Go To Icon</CardTitle>
+            <Title>Card with Go To Icon</Title>
             <span>➤</span>
           </WidthSpaced>
 
@@ -33,7 +32,7 @@ function App() {
 
         <Card variant="active">
           <WidthSpaced>
-            <CardTitle>Active Card</CardTitle>
+            <Title>Active Card</Title>
             <span>➤</span>
           </WidthSpaced>
 
@@ -43,7 +42,7 @@ function App() {
 
         <ClickableCard href="https://google.com" target="_blank">
           <WidthSpaced>
-            <CardTitle>Clickable Card</CardTitle>
+            <Title>Clickable Card</Title>
             <span>➤</span>
           </WidthSpaced>
 
@@ -53,7 +52,7 @@ function App() {
 
         <ClickableCard href="https://google.com" target="_blank" variant="active">
           <WidthSpaced>
-            <CardTitle>Active Clickable Card</CardTitle>
+            <Title>Active Clickable Card</Title>
             <span>➤</span>
           </WidthSpaced>
 
