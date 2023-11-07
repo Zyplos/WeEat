@@ -1,0 +1,12 @@
+.card {
+  color: var(--c-item-text);
+  border-radius: var(--radius);
+  background-color: var(--c-item-background);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-l);
+}
+
+.active {
+  background-color: var(--c-active-item-background);
+  color: var(--c-active-item-text);
+}

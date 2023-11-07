@@ -1,11 +1,5 @@
 @import url("./base.css");
 
-.width-spaced {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
 .we-text-input {
   border: none;
   border-radius: var(--radius);
@@ -100,25 +94,6 @@
 
   display: flex;
   justify-content: space-between;
-}
-
-.we-card {
-  color: var(--c-item-text);
-  border-radius: var(--radius);
-  background-color: var(--c-item-background);
-  padding: var(--space-xl);
-  margin-bottom: var(--space-l);
-}
-
-.we-card .card-title {
-  font-size: var(--text-l);
-  font-weight: bold;
-  margin-bottom: var(--space-l);
-}
-
-.we-card-active {
-  background-color: var(--c-active-item-background);
-  color: var(--c-active-item-text);
 }
 
 .we-card-clickable {

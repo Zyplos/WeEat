@@ -1,0 +1,5 @@
+.we-card-title {
+  font-size: var(--text-l);
+  font-weight: bold;
+  margin-bottom: var(--space-l);
+}
