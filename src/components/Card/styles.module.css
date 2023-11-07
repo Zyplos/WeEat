@@ -30,3 +30,13 @@
   font-weight: bold;
   margin-bottom: var(--space-l);
 }
+
+.acrylic {
+  color: #fff;
+  border-radius: var(--radius);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-l);
+
+  backdrop-filter: blur(var(--blur));
+}

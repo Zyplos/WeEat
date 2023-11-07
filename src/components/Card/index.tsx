@@ -25,3 +25,9 @@ export function ClickableCard({ href, target, variant, children }: ClickableCard
 export function Title({ children }: { children: React.ReactNode }) {
   return <div className={styles.title}>{children}</div>;
 }
+
+// acrylic versions
+
+export function AcrylicCard({ children }: CardProps) {
+  return <div className={`${styles.card} ${styles.acrylic}`}>{children}</div>;
+}

@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
-import { Card, ClickableCard, Title } from "./components/Card";
+import { AcrylicCard, Card, ClickableCard, Title } from "./components/Card";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
@@ -13,7 +13,11 @@ function App() {
   return (
     <>
       <Header>wow!</Header>
-      <MainLayout>a bunch of stuff here</MainLayout>
+      <div id="acrylic-testing">
+        <MainLayout>
+          <AcrylicCard>wowo</AcrylicCard>
+        </MainLayout>
+      </div>
       <SectionHeader>really cool</SectionHeader>
       <MainLayout>
         <div style={{ marginBottom: "1rem" }}>
