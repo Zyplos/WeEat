@@ -30,6 +30,16 @@ function App() {
           <p>0.42 miles away</p>
           <p>5 minute commute time</p>
         </Card>
+
+        <Card variant="active">
+          <WidthSpaced>
+            <CardTitle>Five Guys</CardTitle>
+            <span>➤</span>
+          </WidthSpaced>
+
+          <p>0.42 miles away</p>
+          <p>5 minute commute time</p>
+        </Card>
       </MainLayout>
     </>
   );
