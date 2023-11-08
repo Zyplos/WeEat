@@ -54,6 +54,10 @@
   --c-active-item-background: #ff6948;
   --c-active-item-text: #fff;
 
+
+  --c-gold: #B28136;
+  --c-silver: #EAEAEA;
+  --c-bronze: #cd7f32;
   /* Radius & Fields */
   --radius: 3rem;
   --fieldBorderWidth: 2px;
