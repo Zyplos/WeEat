@@ -29,29 +29,9 @@ function App() {
           <p>im just some normal text</p>
         </Card>
 
-        <Card>
-          <WidthSpaced>
-            <Title>Card with Go To Icon</Title>
-            <span>➤</span>
-          </WidthSpaced>
-
-          <p>0.42 miles away</p>
-          <p>5 minute commute time</p>
-        </Card>
-
-        <Card variant="active">
-          <WidthSpaced>
-            <Title>Active Card</Title>
-            <span>➤</span>
-          </WidthSpaced>
-
-          <p>0.42 miles away</p>
-          <p>5 minute commute time</p>
-        </Card>
-
         <ClickableCard href="https://google.com" target="_blank">
           <WidthSpaced>
-            <Title>Clickable Card</Title>
+            <Title>Clickable Card with Icon</Title>
             <span>➤</span>
           </WidthSpaced>
 

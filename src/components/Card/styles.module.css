@@ -17,10 +17,6 @@
 }
 
 .clickable:hover .card {
-  background-color: var(--c-item-hover);
-}
-
-.card:hover {
   color: var(--c-item-text);
   background-color: var(--c-item-hover);
 }
