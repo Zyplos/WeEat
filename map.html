@@ -17,6 +17,7 @@
         #map {
             width: 100vw;
             height: 100vh;
+            z-index: 1;
         }
 
         .place {
@@ -54,7 +55,7 @@
             width: 30px;
             height: 30px;
             transform: translate(30%, -30%);
-            background-color: green;
+            background-color: rgba(0,0,0,.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,25 +64,43 @@ clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%,
         }
 
 
-        .gold {
+        .link {
+            color: var(--c-text-color);
+        }
+
+        .gold span {
             background-color: var(--c-gold);
-            z-index: 99;
+            z-index: 9999999;
+        }
+        
+        .silver span {
+            background-color: var(--c-silver);
+            color: var(--c-text-dark-color);
+            z-index: 9999998;
+        }
+        
+        .bronze span {
+            background-color: var(--c-bronze);
+            /* z-index: 97; */
+            z-index: 9999997;
+        }
+
+        .gold  {
+            z-index: 9999999;
         }
         
         .silver {
-            background-color: var(--c-silver);
-            color: var(--c-text-dark-color);
-            z-index: 98;
+            z-index: 9999998;
         }
         
         .bronze {
-            background-color: var(--c-bronze);
-            z-index: 97;
+            z-index: 9999997;
         }
 
         </style>
     <section class="map" id="map">
         
+        <button class="list-view">view-list</button>
     </section>
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUb6mfOeyRWTcoxuHpGNz11ArpnDX33Tg&callback=initMap&libraries=places&v=weekly"

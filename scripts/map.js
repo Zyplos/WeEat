@@ -42,7 +42,7 @@ function distance(rest) {
 
 
 function byDistance(a, b) {
-  return b.distance - a.distance
+  return a.distance - b.distance
 }
 
 function calcDistances(results) {
@@ -81,7 +81,7 @@ function makeRequest(newRequest) {
       const newResults = calcDistances(results)
 
       for (let i = 0; i < newResults.length; i++) {
-        createMarker(newResults[i], 2-i);
+        createMarker(newResults[i], i);
       }
       // map.setCenter(results[0].geometry.location);
     }
@@ -126,12 +126,24 @@ async function setMarker(name, location, place, rank) {
     span.innerText = rank;
     span.classList.add("rank")
     if (rank === 1) {
-      span.classList.add("gold");
+      RestaurantInfoElement.classList.add("gold");
     } else if (rank === 2) {
-      span.classList.add("silver"); 
+      RestaurantInfoElement.classList.add("silver"); 
     } else if (rank === 3) {
-      span.classList.add("bronze");
+      RestaurantInfoElement.classList.add("bronze");
     }
+
+    const link = document.createElement("a");
+
+    link.innerText = "Directions!"
+    link.target = "_blank";
+    link.href = "https://google.com";
+    link.classList.add("link")
+
+
+    console.log(place)
+
+    RestaurantInfoElement.appendChild(link);
 
     RestaurantInfoElement.appendChild(span);
   }
@@ -167,3 +179,4 @@ navigator.geolocation.getCurrentPosition((e) => {
 })
 
 window.initMap = initMap;
+
