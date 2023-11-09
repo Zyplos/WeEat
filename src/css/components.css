@@ -24,48 +24,6 @@
   margin: 0;
 }
 
-.we-button {
-  border: none;
-  border-radius: var(--radius);
-
-  padding: var(--textFrameY) var(--textFrameX);
-
-  color: var(--c-item-text);
-  background-color: var(--c-item-background);
-
-  font-size: var(--text-m);
-  cursor: pointer;
-
-  font-weight: bold;
-}
-
-.we-button:hover {
-  background-color: var(--c-item-hover);
-}
-
-.we-button:active {
-  background-color: var(--c-active-item-background);
-  color: var(--c-active-item-text);
-}
-
-.we-button-outlined {
-  border: var(--fieldBorderWidth) solid var(--c-item-background);
-  background-color: transparent;
-  color: var(--c-item-background);
-}
-
-.we-button-outlined:hover {
-  background-color: var(--c-item-hover);
-  color: var(--c-item-text);
-  border: var(--fieldBorderWidth) solid var(--c-item-hover);
-}
-
-.we-button-outlined:active {
-  background-color: var(--c-active-item-background);
-  color: var(--c-active-item-text);
-  border: var(--fieldBorderWidth) solid var(--c-active-item-background);
-}
-
 .we-floating-footer {
   position: fixed;
   bottom: 0;
@@ -79,21 +37,4 @@
 
   display: flex;
   justify-content: space-between;
-}
-
-.we-acrylic-button {
-  border: none;
-  border-radius: var(--radius);
-
-  padding: var(--textFrameY) var(--textFrameX);
-
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  font-size: var(--text-m);
-  cursor: pointer;
-
-  font-weight: bold;
-
-  backdrop-filter: blur(var(--blur));
 }

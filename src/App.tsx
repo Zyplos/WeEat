@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import "./App.css";
+import { Button } from "./components/Button";
 import { AcrylicCard, Card, ClickableCard, Title } from "./components/Card";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
@@ -15,6 +16,7 @@ function App() {
       <Header>wow!</Header>
       <div id="acrylic-testing">
         <MainLayout>
+          <Button variant="acrylic">Active Button</Button>
           <AcrylicCard>wowo</AcrylicCard>
         </MainLayout>
       </div>
@@ -22,6 +24,12 @@ function App() {
       <MainLayout>
         <div style={{ marginBottom: "1rem" }}>
           <TextInput placeholder="Search..." />
+        </div>
+
+        <div style={{ margin: "2rem 0" }}>
+          <Button>Normal Button</Button>
+          <Button variant="outlined">Outlined Button</Button>
+          <Button variant="active">Active Button</Button>
         </div>
 
         <Card>
