@@ -6,13 +6,17 @@ import FloatingFooter from "./components/FloatingFooter";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
+import MapSection from "./components/Pages/Map";
 import SectionHeader from "./components/SectionHeader";
 import WidthSpaced from "./components/WidthSpaced";
 
 function App() {
   // const [count, setCount] = useState(0);
 
-  return (
+
+
+
+  const main = (
     <>
       <Header>wow!</Header>
       <div id="acrylic-testing">
@@ -64,6 +68,16 @@ function App() {
       </FloatingFooter>
     </>
   );
+
+
+
+
+
+return <MapSection></MapSection>;
+
+
+
+  return main;
 }
 
 export default App;
