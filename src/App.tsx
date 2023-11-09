@@ -2,6 +2,7 @@
 import "./App.css";
 import { Button } from "./components/Button";
 import { AcrylicCard, Card, ClickableCard, Title } from "./components/Card";
+import FloatingFooter from "./components/FloatingFooter";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
@@ -57,6 +58,10 @@ function App() {
           <p>5 minute commute time</p>
         </ClickableCard>
       </MainLayout>
+      <FloatingFooter>
+        <Button variant="outlined">Back</Button>
+        <Button>Next</Button>
+      </FloatingFooter>
     </>
   );
 }
