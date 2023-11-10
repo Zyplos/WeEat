@@ -7,6 +7,7 @@
       <!-- <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
         ({key: "AIzaSyAUb6mfOeyRWTcoxuHpGNz11ArpnDX33Tg", v: "weekly"});</script> -->
     <script type="module" src="./scripts/map.js"></script>
+
     
     <link rel="stylesheet" href="./assets/css/base.css"/>
 </head>
@@ -106,5 +107,86 @@ clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%,
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUb6mfOeyRWTcoxuHpGNz11ArpnDX33Tg&callback=initMap&libraries=places&v=weekly"
     defer
     ></script>
+
+      <!-- Map section -->
+    <section class="map" id="map">
+        <button class="list-view">view-list</button>
+    </section>
+
+    <!-- Buttons at each corner -->
+    <div class="corner-button top-left">Groups </div>
+    <div class="corner-button top-right">Edit Preferences</div>
+    <div class="corner-button bottom-left">View As List</div>
+    <div class="corner-button bottom-right">Random Places</div>
+
+    <!-- ... your body content ... -->
+
+    <style>
+        /* Map styles */
+
+        .map {
+            position: relative;
+        }
+
+        /* Button styles */
+
+        .corner-button {
+           position: fixed;
+           padding: 10px;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           z-index: 2; /* Adjust as needed */
+           border: none;
+           border-radius: var(--radius);
+           padding: var(--textFrameY) var(--textFrameX);
+           color: #fff;
+           background-color: rgba(0, 0, 0, 0.5);
+           font-size: var(--text-m);
+           cursor: pointer;
+           font-weight: bold;
+           backdrop-filter: blur(var(--blur));
+}
+        
+        /* Button positions */
+
+        .top-left {
+            top: 10px;
+            left: 10px;
+            
+
+        }
+
+        .top-right {
+            top: 10px;
+            right: 10px;
+        }
+
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+        @media (max-width: 768px) {
+            .corner-button {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .corner-button {
+                padding: 6px;
+                font-size: 12px;
+            }
+        }
+    </style>
+
+</body>
+
 </body>
 </html>
