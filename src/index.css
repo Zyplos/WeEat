@@ -58,6 +58,11 @@
   --radius: 3rem;
   --fieldBorderWidth: 2px;
   --blur: 11px;
+
+
+  --c-gold: #B28136;
+  --c-silver: #EAEAEA;
+  --c-bronze: #cd7f32;
 }
 
 /* resets */
@@ -94,7 +99,7 @@ body {
   color: var(--c-text-color);
   background-color: var(--c-main-background);
 
-  padding-bottom: 5rem;
+  /* padding-bottom: 5rem; */
 }
 
 a {

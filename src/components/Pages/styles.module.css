@@ -1,5 +1,36 @@
 
 
+.list-view {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    font-size: var(--text-m);
+    background-color: green;
+    z-index: 9999;
+    cursor: pointer;
+  }
+
+  
+  .drawer {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    background-color: rgba(0,0,0,.5);
+    z-index: 9999999;
+    transform: translate(100%);
+    transition: all .2s;
+  }
+
+  .drawer.opened {
+
+    transform: translate(0%);
+  }
+
+  .relative {
+    position: relative;
+  }
+
+
 body {
     overflow: hidden;
 }
