@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { Link, Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import "./App.css";
 import { Button } from "./components/Button";
 import { AcrylicCard, Card, ClickableCard, Title } from "./components/Card";
@@ -6,26 +7,28 @@ import FloatingFooter from "./components/FloatingFooter";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
-import MapSection from "./components/Pages/Map";
+import MapSection from "./components/Pages/Map/Map";
 import SectionHeader from "./components/SectionHeader";
 import WidthSpaced from "./components/WidthSpaced";
+import ListView from "./components/Pages/ListView/ListView";
+import { useState } from "react";
+import localforage from "localforage";
+
 
 function App() {
   // const [count, setCount] = useState(0);
-
-
-
 
   const main = (
     <>
       <Header>wow!</Header>
       <div id="acrylic-testing">
         <MainLayout>
+          <Link to="/map">Link</Link>
           <Button variant="acrylic">Active Button</Button>
           <AcrylicCard>wowo</AcrylicCard>
         </MainLayout>
       </div>
-      <SectionHeader>really cool</SectionHeader>
+      <SectionHeader center={false}>really cool</SectionHeader>
       <MainLayout>
         <div style={{ marginBottom: "1rem" }}>
           <TextInput placeholder="Search..." />
@@ -69,15 +72,22 @@ function App() {
     </>
   );
 
+  localforage.config({
+    name: 'WeEat'
+});
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
 
+      <>
+        <Route path="/" element={main}/>
+        <Route path="/map" element={<MapSection/>} />  
+        <Route path="/map/list-view" element={<ListView/>} />  
+      </>
+    )
+  );
 
-
-return <MapSection></MapSection>;
-
-
-
-  return main;
+  return <RouterProvider router={router} />
 }
 
 export default App;

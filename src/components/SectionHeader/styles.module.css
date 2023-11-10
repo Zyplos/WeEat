@@ -4,4 +4,10 @@
   margin-bottom: var(--space-l);
 
   padding: var(--space-xl);
+  position: relative;
+}
+
+
+.center {
+  text-align: center;
 }

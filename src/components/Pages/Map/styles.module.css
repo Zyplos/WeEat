@@ -30,14 +30,11 @@
     position: relative;
   }
 
-
+/* 
 body {
     overflow: hidden;
-}
+} */
 
-#root {
-    overflow: hidden;
-}
 .map {
     width: 100vw;
     height: 100vh;

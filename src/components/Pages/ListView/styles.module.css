@@ -1,0 +1,12 @@
+.flip {
+    position: absolute;
+    left: 5%;
+    text-decoration: none;
+    border-radius: var(--radius);
+    border: var(--fieldBorderWidth) solid var(--c-item-background);
+    padding: var(--space-m);
+    font-size: var(--text-l);
+    color: var(--c-item-background);
+    top: 50%;
+    transform: rotate(180deg) translateY(50%);
+}
