@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import { Link, Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Link, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import "./App.css";
 import { Button } from "./components/Button";
 import { AcrylicCard, Card, ClickableCard, Title } from "./components/Card";
@@ -7,13 +7,11 @@ import FloatingFooter from "./components/FloatingFooter";
 import { TextInput } from "./components/Forms";
 import Header from "./components/Header";
 import MainLayout from "./components/MainLayout";
-import MapSection from "./components/Pages/Map/Map";
+import MapSection from "./pages/Map/Map";
 import SectionHeader from "./components/SectionHeader";
 import WidthSpaced from "./components/WidthSpaced";
-import ListView from "./components/Pages/ListView/ListView";
-import { useState } from "react";
+import ListView from "./pages/ListView/ListView";
 import localforage from "localforage";
-
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -73,21 +71,20 @@ function App() {
   );
 
   localforage.config({
-    name: 'WeEat'
-});
+    name: "WeEat",
+  });
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-
       <>
-        <Route path="/" element={main}/>
-        <Route path="/map" element={<MapSection/>} />  
-        <Route path="/map/list-view" element={<ListView/>} />  
+        <Route path="/" element={main} />
+        <Route path="/map" element={<MapSection />} />
+        <Route path="/map/list-view" element={<ListView />} />
       </>
     )
   );
 
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
 export default App;
