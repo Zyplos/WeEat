@@ -43,8 +43,9 @@ export default function ListView() {
         {locations
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
             locations.map((location: any) => {
+              console.log(location);
               return (
-                <ClickableCard href="https://google.com" target="_blank" key={location.vicinity}>
+                <ClickableCard href={`https://www.google.com/maps/dir//${location.name},${location.vicinity}`} target="_blank" key={location.vicinity}>
                   <WidthSpaced>
                     <Title>{location.name}</Title>
                     <span>➤</span>
