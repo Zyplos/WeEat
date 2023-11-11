@@ -26,7 +26,6 @@
 }
 
 .button:active,
-.button:focus,
 .active {
   background-color: var(--c-active-item-background);
   color: var(--c-active-item-text);
