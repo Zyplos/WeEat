@@ -12,6 +12,8 @@
 
   font-weight: bold;
   display: inline-block;
+
+  text-decoration: none;
 }
 
 .button:hover {

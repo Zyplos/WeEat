@@ -1,4 +1,4 @@
-import { Button } from "../../components/Button";
+import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import { TextInput } from "../../components/Forms";
 import Header from "../../components/Header";
@@ -51,7 +51,7 @@ export default function CategoriesPage() {
       </MainLayout>
       <FloatingFooter>
         <Button variant="outlined">Back</Button>
-        <Button>Next</Button>
+        <RouterButton to="/preferences/transport">Next</RouterButton>
       </FloatingFooter>
     </>
   );
