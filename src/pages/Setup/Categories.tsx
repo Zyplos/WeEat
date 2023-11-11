@@ -40,7 +40,7 @@ export default function CategoriesPage() {
   const isSetupDone = localStorage.getItem("setup-done") == "true";
 
   useEffect(() => {
-    localforage.getItem("preference-categories").then((value) => setSelectedCategories(value as string[]));
+    localforage.getItem("preference-categories").then((value) => setSelectedCategories((value as string[]) || []));
   }, []);
 
   const onChangeCallback = () => {

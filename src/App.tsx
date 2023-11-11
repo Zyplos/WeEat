@@ -15,6 +15,8 @@ import PreferencesIndex from "./pages/Setup/PreferencesIndex";
 import TimePage from "./pages/Setup/Time";
 
 export default function App() {
+  const isSetupDone = localStorage.getItem("setup-done") == "true";
+
   localforage.config({
     name: "WeEat",
   });
@@ -22,7 +24,7 @@ export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<SetupIndex />} />
+        <Route path="/" element={isSetupDone ? <MapSection /> : <SetupIndex />} />
         <Route path="/map" element={<MapSection />} />
         <Route path="/debug" element={<DebugPage />} />
         <Route path="/map/list-view" element={<ListView />} />
