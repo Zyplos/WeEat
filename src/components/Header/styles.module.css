@@ -6,6 +6,10 @@
   padding: var(--space-xl);
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
+
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
 }
 
 h1 {

@@ -17,7 +17,6 @@
   position: relative;
 }
 
-
 .clickable:hover .card {
   color: var(--c-item-text);
   background-color: var(--c-item-hover);
@@ -37,4 +36,8 @@
   margin-bottom: var(--space-l);
 
   backdrop-filter: blur(var(--blur));
+}
+
+.card p {
+  margin-bottom: 0;
 }

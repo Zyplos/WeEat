@@ -1,9 +1,12 @@
-import { html,  LitElement } from "lit";
+import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import mapComponentCss from "./map-component.css";
 import localforage from "localforage";
 
-interface Coordinates {lat: number, lng: number}
+interface Coordinates {
+  lat: number;
+  lng: number;
+}
 // A plain Lit component which can be used in any framework
 @customElement("map-component")
 export class MapComponent extends LitElement {
@@ -138,8 +141,7 @@ export class MapComponent extends LitElement {
   }
 
   makeRequest(newRequest: any) {
-
-    console.log(newRequest)
+    console.log(newRequest);
 
     const service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch(newRequest, (results, status) => {
@@ -155,36 +157,34 @@ export class MapComponent extends LitElement {
     });
   }
 
-
-
   // with chosen transport method, we need to create a radius that will be reachable within that time
   createRadius(time: string, transport: string) {
-    if (time === "1hour") {  // 1hour or above case, it doesnt fucking matter where
+    if (time === "1hour") {
+      // 1hour or above case, it doesnt fucking matter where
       return 9999999;
     }
 
-
     let multiplier = 0;
 
-    const AVERAGE_WALK_SPEED = 5.0 * 1000  // m/h
-    const AVERAGE_BIKE_SPEED = (12.8 + 19.3)/2 * 1000;  // m/h
-    const AVREAGE_DRIVE_SPEED = 20 * 1000;  // m/h
+    const AVERAGE_WALK_SPEED = 5.0 * 1000; // m/h
+    const AVERAGE_BIKE_SPEED = ((12.8 + 19.3) / 2) * 1000; // m/h
+    const AVREAGE_DRIVE_SPEED = 20 * 1000; // m/h
 
     if (transport === "walking") {
-      multiplier = AVERAGE_WALK_SPEED
+      multiplier = AVERAGE_WALK_SPEED;
     } else if (transport === "biking") {
-      multiplier = AVERAGE_BIKE_SPEED
+      multiplier = AVERAGE_BIKE_SPEED;
     } else if (transport === "driving") {
-      multiplier = AVREAGE_DRIVE_SPEED
+      multiplier = AVREAGE_DRIVE_SPEED;
     }
 
-    let timeByHour = Number(time) / 60 
+    const timeByHour = Number(time) / 60;
 
-    return multiplier * timeByHour / 2;  // Divide by 2 is there AND back
+    return (multiplier * timeByHour) / 2; // Divide by 2 is there AND back
   }
 
   // 0, 1, 2, 3, 4
-  createPriceRange(budget: number): {maxprice: number, minprice: number} {
+  createPriceRange(budget: number): { maxprice: number; minprice: number } {
     if (budget === 1) {
       return {
         maxprice: 0,
@@ -214,29 +214,28 @@ export class MapComponent extends LitElement {
   }
 
   async gatherPreferences() {
-
     let request = {};
 
     try {
       const time: string | null = await localforage.getItem("preference-time");
       const transport = await localforage.getItem("preference-transport");
       request = {
-        radius: this.createRadius(time as string, transport as string)
-      }
+        radius: this.createRadius(time as string, transport as string),
+      };
 
       const categories: string[] | null = await localforage.getItem("preference-categories");
       request = {
         ...request,
-        keyword: (categories as string[]).join(" ")
-      }
+        keyword: (categories as string[]).join(" "),
+      };
 
       const budget: string | null = await localforage.getItem("preference-budget");
-      const range = this.createPriceRange(Number(budget as string))
+      const range = this.createPriceRange(Number(budget as string));
       request = {
         ...request,
         maxprice: range.maxprice,
-        minprice: range.minprice
-      }
+        minprice: range.minprice,
+      };
 
       request = {
         ...request,
@@ -244,20 +243,18 @@ export class MapComponent extends LitElement {
         openNow: true,
         fields: ["ALL"],
         location: this.center,
-      }
-
-    } finally {      
-      // this.makeRequest(request);
-      // this.requestUpdate();
+      };
+    } finally {
+      this.makeRequest(request);
+      this.requestUpdate();
     }
   }
 
   startApp() {
     this.map.setCenter(this.center);
     this.setMarker("You are here", this.center, null, 0);
-    this.gatherPreferences()
+    this.gatherPreferences();
   }
-
 
   getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(
@@ -266,14 +263,13 @@ export class MapComponent extends LitElement {
         this.center.lng = crd.longitude;
         this.center.lat = crd.latitude;
         localforage.setItem("geolocation", this.center);
-  
+
         this.startApp();
       },
       () => {
         console.log("got current position");
       }
     );
-
   }
 
   async getGeolocation() {
@@ -288,7 +284,6 @@ export class MapComponent extends LitElement {
       }
 
       this.getCurrentPosition();
-
     }
   }
 
@@ -320,8 +315,8 @@ export class MapComponent extends LitElement {
   
     <a
     href="/map/list-view"
-    class="list-view">view</a>
-    <button class="refresh-button" @click=${this.getCurrentPosition}>Refresh</button>
+    class="list-view" style="display:none;">view</a>
+    <button class="refresh-button" style="display:none;" @click=${this.getCurrentPosition}>Refresh</button>
     <div style="
     width: 100vw;
     height: 100vh;

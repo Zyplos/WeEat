@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import localforage from "localforage";
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
+import Header from "../../components/Header";
+import { RouterButton } from "../../components/Button";
 
 const MILES_CONVERSION = 0.62137119;
 
@@ -22,20 +24,25 @@ export default function ListView() {
       } catch (err) {}
     };
     fetchLocations();
-  });
+  }, []);
+
+  console.log("!!!locations ", locations);
 
   return (
     <>
-      <SectionHeader center>
-        <Link to="/map" className={styles["flip"]}>
-          ➤
+      <Header>
+        <Link to="/map" className={styles["back-button"]}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+          </svg>
         </Link>
-        Choose a Place!
-      </SectionHeader>
+        <h1>Choose a Place!</h1>
+      </Header>
       <MainLayout>
-        <Title>Chooe the place you'd like to go to. Everyone in your group is also choosing!</Title>
+        <p>Choose the place you'd like to go to.</p>
         {locations
-          ? locations.map((location: any) => {
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            locations.map((location: any) => {
               return (
                 <ClickableCard href="https://google.com" target="_blank">
                   <WidthSpaced>
