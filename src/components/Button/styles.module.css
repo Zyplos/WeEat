@@ -16,6 +16,8 @@
   text-decoration: none;
 
   margin-bottom: var(--space-m);
+  display: block;
+  text-align: center;
 }
 
 .button:hover {

@@ -1,12 +1,16 @@
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import "./App.css";
+import localforage from "localforage";
+
+import DebugPage from "./pages/debug";
+
 import MapSection from "./pages/Map/Map";
 import ListView from "./pages/ListView/ListView";
-import localforage from "localforage";
+
 import SetupIndex from "./pages/Setup/SetupIndex";
 import CategoriesPage from "./pages/Setup/Categories";
-import DebugPage from "./pages/debug";
 import TransportPage from "./pages/Setup/Transport";
+import BudgetPage from "./pages/Setup/Budget";
 
 export default function App() {
   localforage.config({
@@ -23,6 +27,7 @@ export default function App() {
         <Route path="/preferences" element={<SetupIndex />} />
         <Route path="/preferences/categories" element={<CategoriesPage />} />
         <Route path="/preferences/transport" element={<TransportPage />} />
+        <Route path="/preferences/budget" element={<BudgetPage />} />
       </>
     )
   );
