@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import Header from "../../components/Header";
@@ -10,6 +10,10 @@ export default function BudgetPage() {
   const navigate = useNavigate();
   const [current, setCurrent] = useState<string | null>(null);
   const isSetupDone = localStorage.getItem("setup-done") == "true";
+
+  useEffect(() => {
+    localforage.getItem("preference-budget").then((value) => setCurrent(value as string));
+  }, []);
 
   const options = {
     "1": "$10 or less",

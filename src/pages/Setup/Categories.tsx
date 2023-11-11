@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, RouterButton } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import { TextInput } from "../../components/Forms";
@@ -38,6 +38,10 @@ export default function CategoriesPage() {
   const [filteredCategories, setFilteredCategories] = useState<string[]>(categories);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const isSetupDone = localStorage.getItem("setup-done") == "true";
+
+  useEffect(() => {
+    localforage.getItem("preference-categories").then((value) => setSelectedCategories(value as string[]));
+  }, []);
 
   const onChangeCallback = () => {
     if (!inputRef.current) return;

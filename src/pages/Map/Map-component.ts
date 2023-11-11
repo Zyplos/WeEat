@@ -65,7 +65,7 @@ export class MapComponent extends LitElement {
       // @ts-ignore
       const { AdvancedMarkerElement } = (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
 
-       return new AdvancedMarkerElement({
+      return new AdvancedMarkerElement({
         map: this.map,
         position: location,
         content: div,
@@ -76,13 +76,17 @@ export class MapComponent extends LitElement {
   // place is the object
   // name is string
   async setMarker(name: string, location: Coordinates, place: any, rank: number) {
+    console.log("!!!SETMARKER", name, location, place, rank);
     const RestaurantInfoElement = document.createElement("div");
     RestaurantInfoElement.classList.add("here");
     const link = document.createElement("a");
 
-    console.log(place)
+    console.log(place);
     link.target = "_blank";
-    link.href = `https://www.google.com/maps/dir/@${location.lat},${location.lng}/${name},${place.vicinity}`;
+    if (place) {
+      console.log(this.center);
+      link.href = `https://www.google.com/maps/dir/${this.center.lat},${this.center.lng}/${name},${place.vicinity}`;
+    }
 
     link.classList.add("link");
 
@@ -115,8 +119,6 @@ export class MapComponent extends LitElement {
     }
 
     return this.addMarkerElement(RestaurantInfoElement, location);
-
-    
   }
 
   async checkIfLocExists(place: any, rank: any) {
@@ -133,6 +135,7 @@ export class MapComponent extends LitElement {
 
   async insertLocationsIntoLF() {
     try {
+      console.log("!!TRYING TO SET LOCATIONS LOCAL", this.locations);
       await localforage.setItem("locations", JSON.stringify(this.locations));
 
       console.log("success");
@@ -146,6 +149,7 @@ export class MapComponent extends LitElement {
 
     const service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch(newRequest, (results, status) => {
+      console.log("!!!RESULTS", results, status);
       if (status === google.maps.places.PlacesServiceStatus.OK && results) {
         this.locations = this.calcDistances(results);
 
@@ -154,6 +158,9 @@ export class MapComponent extends LitElement {
         for (let i = 0; i < this.locations.length; i++) {
           this.checkIfLocExists(this.locations[i], i);
         }
+      } else {
+        this.locations = [];
+        this.insertLocationsIntoLF();
       }
     });
   }

@@ -39,12 +39,12 @@ export default function ListView() {
         <h1>Choose a Place!</h1>
       </Header>
       <MainLayout>
-        <p>Choose the place you'd like to go to.</p>
+        {locations.length > 0 && <p>Choose the place you'd like to go to.</p>}
         {locations
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
             locations.map((location: any) => {
               return (
-                <ClickableCard href="https://google.com" target="_blank">
+                <ClickableCard href="https://google.com" target="_blank" key={location.vicinity}>
                   <WidthSpaced>
                     <Title>{location.name}</Title>
                     <span>➤</span>
@@ -56,6 +56,14 @@ export default function ListView() {
               );
             })
           : ""}
+
+        {locations.length == 0 && (
+          <>
+            <h2>No places found.</h2>
+            <p>Looks like your specific preferences did not turn up any places. Try changing your preferences to be more lax to find some places.</p>
+            <RouterButton to="/preferences">Change Preferences</RouterButton>
+          </>
+        )}
       </MainLayout>
     </>
   );
