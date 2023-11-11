@@ -4,11 +4,12 @@ import FloatingFooter from "../../components/FloatingFooter";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
 import localforage from "localforage";
-
-// import IntroImage from "../../assets/intro-picture.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function TimePage() {
+  const navigate = useNavigate();
   const [current, setCurrent] = useState<string | null>(null);
+  const isSetupDone = localStorage.getItem("setup-done") == "true";
 
   const options = {
     "5": "5 minutes",
@@ -27,7 +28,7 @@ export default function TimePage() {
 
   async function handleClick(arg: string) {
     try {
-      await localforage.setItem("preference-time", arg).then(console.log);
+      await localforage.setItem("preference-time", arg);
       setCurrent(arg);
     } catch (error) {
       console.error("couldn't save setting", error);
@@ -48,9 +49,15 @@ export default function TimePage() {
         ))}
       </MainLayout>
       <FloatingFooter>
-        <Button variant="outlined" nospacing>
-          Back
-        </Button>
+        {isSetupDone ? (
+          <RouterButton to="/preferences" variant="outlined" nospacing>
+            Back
+          </RouterButton>
+        ) : (
+          <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
+            Back
+          </Button>
+        )}
         <RouterButton to="/preferences/budget" nospacing>
           Next
         </RouterButton>

@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
+import localforage from "localforage";
+import { useNavigate } from "react-router-dom";
 
 export default function BudgetPage() {
+  const navigate = useNavigate();
+  const [current, setCurrent] = useState<string | null>(null);
+  const isSetupDone = localStorage.getItem("setup-done") == "true";
+
   const options = {
     "1": "$10 or less",
     "2": "$20 or less",
@@ -14,6 +21,15 @@ export default function BudgetPage() {
     "100+": "Over $100",
   };
 
+  async function handleClick(arg: string) {
+    try {
+      await localforage.setItem("preference-budget", arg);
+      setCurrent(arg);
+    } catch (error) {
+      console.error("couldn't save setting", error);
+    }
+  }
+
   return (
     <>
       <Header>
@@ -22,17 +38,22 @@ export default function BudgetPage() {
       <MainLayout>
         <p>How much do you want to spend?</p>
         {Object.entries(options).map(([value, label]) => (
-          <div key={value}>
-            <input type="radio" id={value} name="budget" value={value} />
-            <label htmlFor={value}>{label}</label>
-          </div>
+          <Button key={value} onClick={() => handleClick(value)} variant={current == value ? "active" : undefined}>
+            {label}
+          </Button>
         ))}
       </MainLayout>
       <FloatingFooter>
-        <Button variant="outlined" nospacing>
-          Back
-        </Button>
-        <RouterButton to="/map" nospacing>
+        {isSetupDone ? (
+          <RouterButton to="/preferences" variant="outlined" nospacing>
+            Back
+          </RouterButton>
+        ) : (
+          <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
+            Back
+          </Button>
+        )}
+        <RouterButton to="/map" nospacing onClick={() => localStorage.setItem("setup-done", "true")}>
           Next
         </RouterButton>
       </FloatingFooter>
