@@ -65,7 +65,7 @@ export class MapComponent extends LitElement {
       // @ts-ignore
       const { AdvancedMarkerElement } = (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
 
-      const marker = new AdvancedMarkerElement({
+       return new AdvancedMarkerElement({
         map: this.map,
         position: location,
         content: div,
@@ -80,8 +80,10 @@ export class MapComponent extends LitElement {
     RestaurantInfoElement.classList.add("here");
     const link = document.createElement("a");
 
+    console.log(place)
     link.target = "_blank";
-    link.href = "https://google.com";
+    link.href = `https://www.google.com/maps/dir/@${location.lat},${location.lng}/${name},${place.vicinity}`;
+
     link.classList.add("link");
 
     RestaurantInfoElement.appendChild(link);
@@ -112,7 +114,9 @@ export class MapComponent extends LitElement {
       link.appendChild(span);
     }
 
-    this.addMarkerElement(RestaurantInfoElement, location);
+    return this.addMarkerElement(RestaurantInfoElement, location);
+
+    
   }
 
   async checkIfLocExists(place: any, rank: any) {
@@ -123,10 +127,7 @@ export class MapComponent extends LitElement {
       marker = await this.setMarker(place.name, place.geometry.location, place, rank);
     } catch (e) {
     } finally {
-      google.maps.event.addListener(marker!, "click", () => {
-        // infowindow.setContent(place.name);
-        // infowindow.open(map);
-      });
+      google.maps.event.addListener(marker!, "click", () => {});
     }
   }
 
