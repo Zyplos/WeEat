@@ -14,7 +14,9 @@
 .clickable {
   cursor: pointer;
   text-decoration: none;
+  position: relative;
 }
+
 
 .clickable:hover .card {
   color: var(--c-item-text);

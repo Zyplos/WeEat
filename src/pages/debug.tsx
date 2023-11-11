@@ -22,7 +22,7 @@ export default function DebugPage() {
       <SectionHeader center={false}>really cool</SectionHeader>
       <MainLayout>
         <div style={{ marginBottom: "1rem" }}>
-          <TextInput placeholder="Search..." />
+          <TextInput inputRef={null} placeholder="Search..." />
         </div>
 
         <div style={{ margin: "2rem 0" }}>
