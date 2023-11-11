@@ -37,7 +37,7 @@ export default function TimePage() {
   return (
     <>
       <Header>
-        <h1>Food Preferences</h1>
+        <h1>Available Time</h1>
       </Header>
       <MainLayout>
         <p>How much time should it take to get food and come back?</p>
