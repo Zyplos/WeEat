@@ -1,5 +1,4 @@
 import MainLayout from "../../components/MainLayout";
-import SectionHeader from "../../components/SectionHeader";
 import { ClickableCard, Title } from "../../components/Card";
 import WidthSpaced from "../../components/WidthSpaced";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Header";
 import { RouterButton } from "../../components/Button";
 
-const MILES_CONVERSION = 0.62137119;
+// const MILES_CONVERSION = 0.62137119;
 
 export default function ListView() {
   const [locations, setLocations] = useState([]);

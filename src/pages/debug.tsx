@@ -4,7 +4,6 @@ import MainLayout from "../components/MainLayout";
 import { Button } from "../components/Button";
 import { AcrylicCard, Card, Title, ClickableCard } from "../components/Card";
 import FloatingFooter from "../components/FloatingFooter";
-import { TextInput } from "../components/Forms";
 import SectionHeader from "../components/SectionHeader";
 import WidthSpaced from "../components/WidthSpaced";
 
@@ -22,7 +21,7 @@ export default function DebugPage() {
       <SectionHeader center={false}>really cool</SectionHeader>
       <MainLayout>
         <div style={{ marginBottom: "1rem" }}>
-          <TextInput inputRef={null} placeholder="Search..." />
+          {/* <TextInput inputRef={null} placeholder="Search..." /> */}
         </div>
 
         <div style={{ margin: "2rem 0" }}>
