@@ -49,18 +49,21 @@ export default function TimePage() {
         ))}
       </MainLayout>
       <FloatingFooter>
-        {isSetupDone ? (
+        {!isSetupDone && (
+          <>
+            <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
+              Back
+            </Button>
+            <RouterButton to="/map" nospacing onClick={() => localStorage.setItem("setup-done", "true")}>
+              Next
+            </RouterButton>
+          </>
+        )}
+        {isSetupDone && (
           <RouterButton to="/preferences" variant="outlined" nospacing>
             Back
           </RouterButton>
-        ) : (
-          <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
-            Back
-          </Button>
         )}
-        <RouterButton to="/preferences/budget" nospacing>
-          Next
-        </RouterButton>
       </FloatingFooter>
     </>
   );

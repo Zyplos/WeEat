@@ -91,14 +91,16 @@ export default function CategoriesPage() {
         ))}
       </MainLayout>
       <FloatingFooter>
+        {!isSetupDone && (
+          <RouterButton to="/preferences/transport" nospacing>
+            Next
+          </RouterButton>
+        )}
         {isSetupDone && (
           <RouterButton to="/preferences" variant="outlined" nospacing>
             Back
           </RouterButton>
         )}
-        <RouterButton to="/preferences/transport" nospacing>
-          Next
-        </RouterButton>
       </FloatingFooter>
     </>
   );

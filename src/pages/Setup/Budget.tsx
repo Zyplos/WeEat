@@ -44,18 +44,21 @@ export default function BudgetPage() {
         ))}
       </MainLayout>
       <FloatingFooter>
-        {isSetupDone ? (
+        {!isSetupDone && (
+          <>
+            <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
+              Back
+            </Button>
+            <RouterButton to="/preferences/time" nospacing>
+              Next
+            </RouterButton>
+          </>
+        )}
+        {isSetupDone && (
           <RouterButton to="/preferences" variant="outlined" nospacing>
             Back
           </RouterButton>
-        ) : (
-          <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
-            Back
-          </Button>
         )}
-        <RouterButton to="/map" nospacing onClick={() => localStorage.setItem("setup-done", "true")}>
-          Next
-        </RouterButton>
       </FloatingFooter>
     </>
   );

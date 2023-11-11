@@ -40,18 +40,21 @@ export default function TransportPage() {
         ))}
       </MainLayout>
       <FloatingFooter>
-        {isSetupDone ? (
+        {!isSetupDone && (
+          <>
+            <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
+              Back
+            </Button>
+            <RouterButton to="/preferences/budget" nospacing>
+              Next
+            </RouterButton>
+          </>
+        )}
+        {isSetupDone && (
           <RouterButton to="/preferences" variant="outlined" nospacing>
             Back
           </RouterButton>
-        ) : (
-          <Button onClick={() => navigate(-1)} variant="outlined" nospacing>
-            Back
-          </Button>
         )}
-        <RouterButton to="/preferences/time" nospacing>
-          Next
-        </RouterButton>
       </FloatingFooter>
     </>
   );
