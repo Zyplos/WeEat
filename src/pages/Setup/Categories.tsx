@@ -50,8 +50,12 @@ export default function CategoriesPage() {
         ))}
       </MainLayout>
       <FloatingFooter>
-        <Button variant="outlined">Back</Button>
-        <RouterButton to="/preferences/transport">Next</RouterButton>
+        <Button variant="outlined" nospacing>
+          Back
+        </Button>
+        <RouterButton to="/preferences/transport" nospacing>
+          Next
+        </RouterButton>
       </FloatingFooter>
     </>
   );

@@ -11,9 +11,11 @@
   cursor: pointer;
 
   font-weight: bold;
-  display: inline-block;
+  /* display: inline-block; */
 
   text-decoration: none;
+
+  margin-bottom: var(--space-m);
 }
 
 .button:hover {
@@ -63,4 +65,8 @@
 
 .acrylic:hover {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+.nospacing {
+  margin: 0;
 }

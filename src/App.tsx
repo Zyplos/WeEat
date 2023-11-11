@@ -6,6 +6,7 @@ import localforage from "localforage";
 import SetupIndex from "./pages/Setup/SetupIndex";
 import CategoriesPage from "./pages/Setup/Categories";
 import DebugPage from "./pages/debug";
+import TransportPage from "./pages/Setup/Transport";
 
 export default function App() {
   localforage.config({
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/map/list-view" element={<ListView />} />
         <Route path="/preferences" element={<SetupIndex />} />
         <Route path="/preferences/categories" element={<CategoriesPage />} />
+        <Route path="/preferences/transport" element={<TransportPage />} />
       </>
     )
   );
