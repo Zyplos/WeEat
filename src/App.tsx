@@ -12,6 +12,7 @@ import CategoriesPage from "./pages/Setup/Categories";
 import TransportPage from "./pages/Setup/Transport";
 import BudgetPage from "./pages/Setup/Budget";
 import PreferencesIndex from "./pages/Setup/PreferencesIndex";
+import TimePage from "./pages/Setup/Time";
 
 export default function App() {
   localforage.config({
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/preferences/setup" element={<SetupIndex />} />
         <Route path="/preferences/categories" element={<CategoriesPage />} />
         <Route path="/preferences/transport" element={<TransportPage />} />
+        <Route path="/preferences/time" element={<TimePage />} />
         <Route path="/preferences/budget" element={<BudgetPage />} />
       </>
     )

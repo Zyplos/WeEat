@@ -14,7 +14,7 @@ export default function PreferencesIndex() {
         <p>Change your settings here.</p>
         <RouterButton to="/preferences/categories">Food Preferences</RouterButton>
         <RouterButton to="/preferences/transport">Mode of Transport</RouterButton>
-        <RouterButton to="/preferences/categories">Budget</RouterButton>
+        <RouterButton to="/preferences/budget">Budget</RouterButton>
         <RouterButton to="/preferences/time">Available Time</RouterButton>
         <RouterButton to="/map" variant="outlined">
           Back to Map

@@ -21,7 +21,7 @@ export default function TransportPage() {
         <Button variant="outlined" nospacing>
           Back
         </Button>
-        <RouterButton to="/preferences/budget" nospacing>
+        <RouterButton to="/preferences/time" nospacing>
           Next
         </RouterButton>
       </FloatingFooter>
