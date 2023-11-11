@@ -24,6 +24,8 @@ export default css`:host {
       position: relative;
   }
 
+
+  .refresh-button,
   .list-view {
     position: absolute;
     left: 2%;
@@ -37,10 +39,17 @@ export default css`:host {
     padding: var(--space-s) var(--space-m);
     border-radius: var(--radius);
     transition: all .2s;
+    border: none;
   }
+
+  .refresh-button:hover,
   .list-view:hover {
     
     background-color: rgba(0,0,0,.75);
+  }
+
+  .refresh-button {
+    bottom: 10%;
   }
 
 
