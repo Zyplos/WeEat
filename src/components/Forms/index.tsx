@@ -2,8 +2,8 @@ import styles from "./styles.module.css";
 
 interface TextInputProps {
   placeholder?: string;
-  inputRef: any;
-  onChange: any;
+  inputRef:  any;
+  onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
 }
 
 export function TextInput({ placeholder, inputRef, onChange }: TextInputProps) {

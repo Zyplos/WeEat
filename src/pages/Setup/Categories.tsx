@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import { TextInput } from "../../components/Forms";
@@ -39,8 +39,7 @@ export default function CategoriesPage() {
   const inputRef = useRef<HTMLInputElement>()
   const [chosenCategories, changeChosenCategories] = useState(categories);
 
-  const onChangeCallback = (e: any) => {
-
+  const onChangeCallback = () => {
     if (!inputRef.current) return;
 
     const value = inputRef.current.value;
