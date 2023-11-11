@@ -4,9 +4,17 @@ import { TextInput } from "../../components/Forms";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
 
-// import IntroImage from "../../assets/intro-picture.svg";
-
 export default function BudgetPage() {
+  const options = {
+    "1": "$10 or less",
+    "2": "$20 or less",
+    "3": "$30 or less",
+    "4": "$40 or less",
+    "5": "$50 or less",
+    "100": "$100 or less",
+    "100+": "Over $100",
+  };
+
   return (
     <>
       <Header>
@@ -14,16 +22,18 @@ export default function BudgetPage() {
       </Header>
       <MainLayout>
         <p>How much do you want to spend?</p>
-        <TextInput placeholder="Search..." />
-        <Button>Walking</Button>
-        <Button>Biking</Button>
-        <Button>Driving</Button>
+        {Object.entries(options).map(([value, label]) => (
+          <div key={value}>
+            <input type="radio" id={value} name="budget" value={value} />
+            <label htmlFor={value}>{label}</label>
+          </div>
+        ))}
       </MainLayout>
       <FloatingFooter>
         <Button variant="outlined" nospacing>
           Back
         </Button>
-        <RouterButton to="/preferences/transport" nospacing>
+        <RouterButton to="/preferences/budget" nospacing>
           Next
         </RouterButton>
       </FloatingFooter>
