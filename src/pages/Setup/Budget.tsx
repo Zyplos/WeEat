@@ -1,6 +1,5 @@
 import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
-import { TextInput } from "../../components/Forms";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
 
@@ -33,7 +32,7 @@ export default function BudgetPage() {
         <Button variant="outlined" nospacing>
           Back
         </Button>
-        <RouterButton to="/preferences/budget" nospacing>
+        <RouterButton to="/map" nospacing>
           Next
         </RouterButton>
       </FloatingFooter>

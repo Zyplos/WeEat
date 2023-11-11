@@ -11,6 +11,7 @@ import SetupIndex from "./pages/Setup/SetupIndex";
 import CategoriesPage from "./pages/Setup/Categories";
 import TransportPage from "./pages/Setup/Transport";
 import BudgetPage from "./pages/Setup/Budget";
+import PreferencesIndex from "./pages/Setup/PreferencesIndex";
 
 export default function App() {
   localforage.config({
@@ -24,7 +25,8 @@ export default function App() {
         <Route path="/map" element={<MapSection />} />
         <Route path="/debug" element={<DebugPage />} />
         <Route path="/map/list-view" element={<ListView />} />
-        <Route path="/preferences" element={<SetupIndex />} />
+        <Route path="/preferences/" element={<PreferencesIndex />} />
+        <Route path="/preferences/setup" element={<SetupIndex />} />
         <Route path="/preferences/categories" element={<CategoriesPage />} />
         <Route path="/preferences/transport" element={<TransportPage />} />
         <Route path="/preferences/budget" element={<BudgetPage />} />
