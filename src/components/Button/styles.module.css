@@ -17,6 +17,7 @@
 
   margin-bottom: var(--space-m);
   display: block;
+  width: 100%;
   text-align: center;
 }
 
@@ -25,6 +26,7 @@
 }
 
 .button:active,
+.button:focus,
 .active {
   background-color: var(--c-active-item-background);
   color: var(--c-active-item-text);

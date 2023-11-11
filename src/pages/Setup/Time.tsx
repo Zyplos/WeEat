@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { RouterButton, Button } from "../../components/Button";
 import FloatingFooter from "../../components/FloatingFooter";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
+import localforage from "localforage";
 
 // import IntroImage from "../../assets/intro-picture.svg";
 
 export default function TimePage() {
+  const [current, setCurrent] = useState<string | null>(null);
+
   const options = {
     "5": "5 minutes",
     "10": "10 minutes",
@@ -21,6 +25,15 @@ export default function TimePage() {
     "1hour": "1 hour or more",
   };
 
+  async function handleClick(arg: string) {
+    try {
+      await localforage.setItem("preference-time", arg).then(console.log);
+      setCurrent(arg);
+    } catch (error) {
+      console.error("couldn't save setting", error);
+    }
+  }
+
   return (
     <>
       <Header>
@@ -29,10 +42,9 @@ export default function TimePage() {
       <MainLayout>
         <p>How much time should it take to get food and come back?</p>
         {Object.entries(options).map(([value, label]) => (
-          <div key={value}>
-            <input type="radio" id={value} name="budget" value={value} />
-            <label htmlFor={value}>{label}</label>
-          </div>
+          <Button key={value} onClick={() => handleClick(value)} variant={current == value ? "active" : undefined}>
+            {label}
+          </Button>
         ))}
       </MainLayout>
       <FloatingFooter>
