@@ -1,0 +1,5 @@
+.main-layout {
+  padding: var(--space-l) var(--space-xl);
+  /* margin-top: var(--space-m); */
+  padding-bottom: var(--space-4xl);
+}

@@ -1,0 +1,95 @@
+.flip {
+  position: absolute;
+  left: 5%;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: var(--fieldBorderWidth) solid var(--c-item-background);
+  padding: var(--space-m);
+  font-size: var(--text-l);
+  color: var(--c-item-background);
+  top: 50%;
+  transform: rotate(180deg) translateY(50%);
+}
+
+.place {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  /* transform: translate(-50%, -50%); */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+
+  font-size: var(--text-xs);
+}
+
+.gold.place {
+  background-color: var(--c-gold);
+  z-index: 9999999;
+}
+
+.silver.place {
+  background-color: var(--c-silver);
+  color: var(--c-text-dark-color);
+  z-index: 9999998;
+}
+
+.bronze.place {
+  background-color: var(--c-bronze);
+  /* z-index: 97; */
+  z-index: 9999997;
+}
+
+.gold {
+  z-index: 9999999;
+}
+
+.silver {
+  z-index: 9999998;
+}
+
+.bronze {
+  z-index: 9999997;
+}
+
+.back-button {
+  border: none;
+  border-radius: var(--radius);
+
+  padding: 0.4rem 0.8rem;
+
+  color: var(--c-item-text);
+  background-color: var(--c-item-background);
+  line-height: 0;
+
+  font-size: var(--text-m);
+  cursor: pointer;
+
+  font-weight: bold;
+
+  text-decoration: none;
+
+  display: block;
+  text-align: center;
+
+  border: var(--fieldBorderWidth) solid var(--c-item-background);
+  background-color: transparent;
+  color: var(--c-item-background);
+}
+
+.back-button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.back-button:hover {
+  background-color: var(--c-item-hover);
+  color: var(--c-item-text);
+  border: var(--fieldBorderWidth) solid var(--c-item-hover);
+}

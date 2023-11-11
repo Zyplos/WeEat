@@ -1,0 +1,17 @@
+.text-input {
+  border: none;
+  border-radius: 1rem;
+  width: 100%;
+
+  padding: calc(var(--textFrameY) - var(--fieldBorderWidth)) var(--textFrameY);
+
+  color: var(--c-text-dark-color);
+  background-color: var(--c-item-background);
+
+  margin-bottom: 1rem;
+}
+
+.text-input::placeholder {
+  color: var(--c-text-dark-color);
+  opacity: 0.8;
+}
