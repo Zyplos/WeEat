@@ -121,6 +121,6 @@ body {
 
 #map-button-list-view {
   position: absolute;
-  bottom: var(--space-m);
+  bottom: 4rem;
   left: var(--space-m);
 }
