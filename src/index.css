@@ -62,6 +62,9 @@
   --c-gold: #b28136;
   --c-silver: #eaeaea;
   --c-bronze: #cd7f32;
+
+  /* mobile mockup width */
+  --dev-mobile-width: 800px;
 }
 
 /* resets */
@@ -101,6 +104,7 @@ body {
   background-color: var(--c-main-background);
 
   /* padding-bottom: 5rem; */
+  position: relative;
 }
 
 a {
@@ -109,4 +113,20 @@ a {
 
 #acrylic-testing {
   background-image: url("./assets/test2.png");
+}
+
+/* mobile mockup styles */
+html,
+body {
+  height: 100%;
+  max-width: var(--dev-mobile-width);
+  margin: 0 auto;
+}
+
+html {
+  background-color: #111;
+}
+
+body {
+  background-color: var(--c-main-background);
 }

@@ -17,7 +17,7 @@ export default css`
   }
 
   #map {
-    width: 100vw;
+    width: var(--dev-mobile-width);
     height: 100vh;
     z-index: 1;
     overflow: hidden;
