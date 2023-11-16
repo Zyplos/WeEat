@@ -145,7 +145,7 @@ export class MapComponent extends LitElement {
   }
 
   makeRequest(newRequest: any) {
-    console.log(newRequest);
+    console.log("newRequest", newRequest);
 
     const service = new google.maps.places.PlacesService(this.map);
     service.nearbySearch(newRequest, (results, status) => {
@@ -234,7 +234,7 @@ export class MapComponent extends LitElement {
       const categories: string[] | null = await localforage.getItem("preference-categories");
       request = {
         ...request,
-        keyword: (categories as string[]).join(" "),
+        keyword: ((categories as string[]) || []).join(" "),
       };
 
       const budget: string | null = await localforage.getItem("preference-budget");
@@ -244,6 +244,12 @@ export class MapComponent extends LitElement {
         maxprice: range.maxprice,
         minprice: range.minprice,
       };
+
+      // redirect user to /preferences/setup if any of these are null
+      if (!time || !transport || !categories || !budget) {
+        window.location.href = "/preferences/setup";
+        return;
+      }
 
       request = {
         ...request,

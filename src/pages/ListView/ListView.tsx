@@ -17,7 +17,7 @@ export default function ListView() {
     const fetchLocations = async () => {
       try {
         const data: any = await localforage.getItem("locations");
-        const parsedData = JSON.parse(data);
+        const parsedData = JSON.parse(data || []);
 
         setLocations(parsedData);
       } catch (err) {}
