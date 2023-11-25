@@ -14,6 +14,11 @@ export default function Map() {
   return (
     <div className={styles["relative"]}>
       <MapComponent></MapComponent>
+      <div id={styles["map-group-button"]}>
+        <RouterButton to="/groups/create/profile" variant="acrylic" nospacing>
+          Groups
+        </RouterButton>
+      </div>
       <div id={styles["map-button-edit-preferences"]}>
         <RouterButton to="/preferences" variant="acrylic" nospacing>
           Edit Preferences

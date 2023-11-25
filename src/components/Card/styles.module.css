@@ -11,6 +11,10 @@
   color: var(--c-active-item-text);
 }
 
+.event {
+  cursor: pointer;
+}
+
 .clickable {
   cursor: pointer;
   text-decoration: none;

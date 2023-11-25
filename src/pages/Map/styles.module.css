@@ -124,3 +124,9 @@ body {
   bottom: 4rem;
   left: var(--space-m);
 }
+
+#map-group-button {
+  position: absolute;
+  top: var(--space-m);
+  left: var(--space-m);
+}

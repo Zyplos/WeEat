@@ -324,6 +324,7 @@ export class MapComponent extends LitElement {
   }
 
   render() {
+    // <button class="refresh-button" style="display:none;" @click=${this.getCurrentPosition}>Refresh</button>
     return html`
     
   

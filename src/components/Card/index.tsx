@@ -5,6 +5,13 @@ interface CardProps {
   variant?: "active";
 }
 
+interface EventCardProps {
+  children: React.ReactNode;
+  variant?: "active";
+  eventHandler: any;
+  id: string;
+}
+
 interface ClickableCardProps extends CardProps {
   href: string;
   target?: string;
@@ -12,6 +19,10 @@ interface ClickableCardProps extends CardProps {
 
 export function Card({ variant, children }: CardProps) {
   return <div className={`${styles.card} ${variant == "active" ? styles.active : ""}`}>{children}</div>;
+}
+
+export function EventCard({ variant, children, eventHandler, id  }: EventCardProps) {
+  return <div onClick={eventHandler} id={id} className={`event ${styles.event} ${styles.card} ${variant == "active" ? styles.active : ""}`}>{children}</div>;
 }
 
 export function ClickableCard({ href, target, variant, children }: ClickableCardProps) {

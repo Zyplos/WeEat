@@ -1,0 +1,1 @@
+1. On Join server ("one server"), send personal info
