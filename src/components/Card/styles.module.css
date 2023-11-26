@@ -15,6 +15,16 @@
   cursor: pointer;
 }
 
+
+.event:hover {
+  background-color: var(--c-item-hover);
+}
+
+.event:active {
+  background-color: var(--c-active-item-background);
+  color: var(--c-active-item-text);
+}
+
 .clickable {
   cursor: pointer;
   text-decoration: none;

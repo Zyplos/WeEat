@@ -26,28 +26,6 @@ export default function App() {
     name: "WeEat",
   });
 
-  const [groups, setGroups] = useState<Group[]>([]);
-  
-  Conn.onmessage = (evt: any) => {
-    var messages = evt.data;
-    const message: Message = JSON.parse(messages)
-    console.log("JoinGroup", message.type)
-
-    if (message.type === MessageType.CreateGroup) {
-        setGroups((prevGroups: Group[]) => {
-            return [...prevGroups, ...message.payload]
-        })
-
-    } else if (message.type === MessageType.JoinGroup) {
-        setGroups(message.payload)
-        // setPreferences(getGroup(message.payload, message.id)[0])
-    } else if (message.type === MessageType.ChangeState) {
-        setGroups(message.payload)
-        window.location.href = "/map"
-    }
-}
-
-  
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -64,7 +42,7 @@ export default function App() {
         <Route path="/groups" element={<Groups/>} />
         <Route path="/groups/create/profile" element={<CreateProfile/>} />
         <Route path="/groups/create" element={<CreateGroup/>} />
-        <Route path="/groups/join" element={<JoinGroup groups={groups} setGroups={groups}/>} />
+        <Route path="/groups/join" element={<JoinGroup />} />
       </>
     )
   );

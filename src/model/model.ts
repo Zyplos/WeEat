@@ -2,10 +2,15 @@
 
 export interface Group {
     name: string,
-    members: string[],
+    members: Member[],
     preferences: Preferences;
     id: string,
     state: GroupState
+}
+
+export interface Member {
+    img: string,
+    name: string,
 }
 
 export interface Preferences {

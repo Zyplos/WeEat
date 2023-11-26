@@ -73,3 +73,10 @@
 .nospacing {
   margin: 0;
 }
+
+
+.disabled {
+  pointer-events: none;
+  opacity: .5;
+  /* visibility: hidden; */
+}
