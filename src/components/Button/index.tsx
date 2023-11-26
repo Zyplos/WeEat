@@ -15,7 +15,7 @@ interface RouterButtonProps extends ButtonProps {
 
 export function Button({ variant, children, nospacing, onClick, icon }: ButtonProps) {
   return (
-    <button onClick={onClick} className={`${styles.button} ${nospacing ? styles.nospacing : ""} ${variant ? styles[variant] : ""}`}>
+    <button onClick={onClick} className={`${styles.button} ${icon ? styles.left : ""} ${nospacing ? styles.nospacing : ""} ${variant ? styles[variant] : ""}`}>
       {icon}
       {children}
     </button>
@@ -24,7 +24,7 @@ export function Button({ variant, children, nospacing, onClick, icon }: ButtonPr
 
 export function RouterButton({ variant, children, to, nospacing, onClick, icon }: RouterButtonProps) {
   return (
-    <Link to={to} onClick={onClick} className={`${styles.button} ${nospacing ? styles.nospacing : ""} ${variant ? styles[variant] : ""}`}>
+    <Link to={to} onClick={onClick} className={`${styles.button} ${icon ? styles.left : ""} ${nospacing ? styles.nospacing : ""} ${variant ? styles[variant] : ""}`}>
       {icon}
       {children}
     </Link>

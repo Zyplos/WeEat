@@ -21,8 +21,12 @@
   text-align: center;
 
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
+}
+
+.left {
+  justify-content: left;
 }
 
 .button img,
