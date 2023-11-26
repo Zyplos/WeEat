@@ -13,11 +13,7 @@ import TransportPage from "./pages/Setup/Transport";
 import BudgetPage from "./pages/Setup/Budget";
 import PreferencesIndex from "./pages/Setup/PreferencesIndex";
 import TimePage from "./pages/Setup/Time";
-import {CreateGroup, CreateProfile, Groups, JoinGroup} from "./pages/Groups/Groups";
-// @ts-ignore
-import {Conn} from "./ws"
-import { Group, Message, MessageType } from "./model/model";
-import { useState } from "react";
+import { CreateGroup, CreateProfile, Groups, JoinGroup } from "./pages/Groups/Groups";
 
 export default function App() {
   const isSetupDone = localStorage.getItem("setup-done") == "true";
@@ -39,9 +35,9 @@ export default function App() {
         <Route path="/preferences/transport" element={<TransportPage />} />
         <Route path="/preferences/time" element={<TimePage />} />
         <Route path="/preferences/budget" element={<BudgetPage />} />
-        <Route path="/groups" element={<Groups/>} />
-        <Route path="/groups/create/profile" element={<CreateProfile/>} />
-        <Route path="/groups/create" element={<CreateGroup/>} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/groups/create/profile" element={<CreateProfile />} />
+        <Route path="/groups/create" element={<CreateGroup />} />
         <Route path="/groups/join" element={<JoinGroup />} />
       </>
     )
