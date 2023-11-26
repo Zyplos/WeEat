@@ -130,3 +130,28 @@ body {
   top: var(--space-m);
   left: var(--space-m);
 }
+
+
+#group-members {
+  position: absolute;
+  top: var(--space-3xl);
+  left: var(--space-m);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  gap: var(--space-s);
+  padding: var(--space-s);
+  border-radius: var(--radius);
+
+}
+
+#group-members img {
+  width: var(--space-l);
+}
+
+
+.remove {
+  display: none !important;
+}

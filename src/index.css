@@ -54,6 +54,7 @@
   --c-active-item-background: #ff6948;
   --c-active-item-text: #fff;
 
+  --c-error: #E84747;
   /* Radius & Fields */
   --radius: 3rem;
   --fieldBorderWidth: 2px;

@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "active" | "acrylic" | "acrylic-active" | "outlined" | "disabled";
+  variant?: "active" | "acrylic" | "acrylic-active" | "outlined" | "disabled" | "error";
   nospacing?: boolean;
   onClick?: () => void;
 }

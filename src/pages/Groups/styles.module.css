@@ -78,3 +78,18 @@
 
 }
 
+
+.img-box {
+    display: flex;
+    gap: var(--space-s);
+    margin-bottom: var(--space-m);
+}
+
+.img-box img {
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.selected {
+    box-shadow: 0 0 0 2px rgba(255,255,255.5);
+}

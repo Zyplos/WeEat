@@ -12,6 +12,12 @@ import FloatingFooter from "../../components/FloatingFooter"
 import localforage from "localforage"
 import styles from "./styles.module.css"
 import { useNavigate } from "react-router-dom"
+import image1 from "../../assets/images/people/image1.png"
+import image2 from "../../assets/images/people/image2.png"
+import image3 from "../../assets/images/people/image3.png"
+import image4 from "../../assets/images/people/image4.png"
+import image5 from "../../assets/images/people/image5.png"
+import image6 from "../../assets/images/people/image6.png"
 
 const getGroup = (groups: Group[], id: string) => {
     return groups.filter((group: Group) => group.id === id)[0];
@@ -66,6 +72,23 @@ const SearchingSvg = <svg width="70" height="70" viewBox="0 0 70 70" fill="none"
 
 export function Groups() {
 
+    const [leaveButton, setLeaveButton] = useState<Boolean>(false);
+    useEffect(() => {
+
+        const membersStored = localStorage.getItem("members")
+
+        if (membersStored) {
+            setLeaveButton(true)
+        }
+    },[])
+
+    const navigate = useNavigate()
+
+    const leaveGroup = () => {
+        localStorage.setItem("members", "");
+        navigate("/map")
+    }
+
     return  <>
     <Header>
       <h1>Groups</h1>
@@ -73,7 +96,15 @@ export function Groups() {
     <MainLayout>
       <RouterButton to="/groups/create">Create Group</RouterButton>
       <RouterButton to="/groups/join">Join Group</RouterButton>
+    {
+     leaveButton ? <Button onClick={leaveGroup} variant="error">Leave Group</Button> : <></>   
+    }
     </MainLayout>
+    <FloatingFooter>
+    <Button onClick={() => navigate("/map")} variant="outlined" nospacing>
+              Back
+            </Button> 
+    </FloatingFooter>
   </>
 }
 
@@ -155,7 +186,7 @@ export function CreateGroup() {
 }
 
 
-const dummyGroups: Group = [
+const dummyGroups: Group[] = [
     {
         id: "0987654321",
         name: "Angel's Group",
@@ -180,11 +211,11 @@ const dummyGroups: Group = [
         name: "Kenan's Group",
         members: [{
             name: "Kenan",
-            img: "image1"
+            img: "image6"
         }, 
         {
             name: "Frank",
-            img: "image2"
+            img: "image3"
         }],
         preferences: {
             budget: "4",
@@ -219,32 +250,55 @@ const addPreferences = async (groupPreferences: Preferences): Promise<Preference
 }
 
 export function JoinGroup() {
-
     const [groups, setGroups] = useState<Group[]>(dummyGroups);
-
     const [current, setCurrent] = useState<string | null>(null);
-    
 
+    /* this useEffect hook is for simulating *finding a group in 3 seconds* */
     useEffect(() => {
+        const addGroup = () => {
+            setGroups((prevGroups) => {
+                prevGroups.push({
+                    id: "0293487989",
+                    name: "Jessica's Group",
+                    members: [{
+                        name: "Jessica",
+                        img: "image5"
+                    }, 
+                    {
+                        name: "Becca",
+                        img: "image4"
+                    }],
+                    preferences: {
+                        budget: "4",
+                        categories: ["Fine Dining"],
+                        time: "50",
+                        transport: "driving",
+                    },
+                    state: GroupState.Available,
+                })
+            return [...prevGroups]
+            })
+        }
 
-        // addPreferences(groups.preferences)
+        const timeout = setTimeout(addGroup, 3000);
+
+        return () => clearTimeout(timeout)
     }, [])
 
     const joinedGroup = (e: any) => {
         const id = e.target.classList.contains("event") ? e.target.id :
          e.target.closest(".event").id
-
-         console.log("called")
          setCurrent(id)
 
         const name = localStorage.getItem("name")!
+        const image = localStorage.getItem("img")!
 
         groups.forEach((group: Group, i: number) => {
              if (group.id === id) {
                  groups[i].members.push(
                     {
                         name: name,
-                        img: "image2",
+                        img: image,
                     }
                     )                     
             } else {
@@ -258,7 +312,9 @@ export function JoinGroup() {
     }
 
     const readyGroup = () => {
-        window.location.href = "/map"
+        localStorage.setItem("members", JSON.stringify(getGroup(groups, current!).members));
+
+        navigate("/map")
     }
 
     const navigate = useNavigate()
@@ -299,13 +355,13 @@ Looking for groups nearby
             </Title>
         </WidthSpaced>
         <div>
-            {group?.members.map((member: Member) => {
-                return <p>
-                    <span className={styles["center"]}>
-                {PersonFilledSvg}{member.name}
-                    </span>
-                    </p>
-            })}
+        {group?.members.map((member: Member, i: number) => {
+            return <p key={i}>
+                <span className={styles["center"]}>
+            {PersonFilledSvg}{member.name}
+                </span>
+                </p>
+        })}
         </div>
         </EventCard>
     })}
@@ -323,32 +379,78 @@ Looking for groups nearby
 </>
 }
 
+const allImgs = new Array(6).fill("");
+
 export function CreateProfile() {  
     const inputRef = useRef<HTMLInputElement>();
 
     const navigate = useNavigate()
+    const [selectedImg, setSelectedImg] = useState(1);
 
     useEffect(() => {
 
         const name = localStorage.getItem("name")
-
+        
         if (name) {
             navigate("/groups")
+        } else {
+            localStorage.setItem("img", "image1")
         }
-
+        
     }, [])
+
     const onChangeCallback = () => {
         const newName: string = inputRef.current?.value!;
 
         localStorage.setItem("name", newName)
     }
 
-    return  <MainLayout>
+    const chooseImage = (e) => {
+        const num = Number(e.target.id)
+        
+        if (num === 0) return;
+
+
+        localStorage.setItem("img", "image" + num)
+        setSelectedImg(num)
+
+    }
+
+    return  <>
+    <MainLayout>
   <Header><h1>Create Profile</h1></Header>
+  <label>Input your name!</label>
   <TextInput onChange={onChangeCallback} inputRef={inputRef} placeholder="Name" />
+
+<label>Select a profile photo!</label>
+<div className={styles["img-box"]} onClick={chooseImage}>
+    {allImgs.map((_, i:number) => {
+        console.log(i)
+        i+=1
+        if (i === 1) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image1}/>
+        } else if (i === 2) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image2}/>
+        }  else if (i === 3) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image3}/>
+        }  else if (i === 4) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image4}/>
+        }  else if (i === 5) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image5}/>
+        }  else if (i === 6) {
+            return <img className={styles[selectedImg === i ? "selected" : ""]} key={i} id={String(i)} src={image6}/>
+        }  
+    })}
+</div>
+
+</MainLayout>
+
+<FloatingFooter>
 
   <RouterButton to="/groups" nospacing>
             Next
 </RouterButton>
-</MainLayout>
+
+</FloatingFooter>
+</>
 }
