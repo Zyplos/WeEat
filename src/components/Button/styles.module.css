@@ -19,6 +19,16 @@
   display: block;
   width: 100%;
   text-align: center;
+
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.button img,
+.button svg {
+  width: var(--text-l);
+  margin-right: var(--space-l);
 }
 
 .button:hover {
@@ -33,7 +43,7 @@
 
 .error {
   background-color: var(--c-error);
-  color: var(--c-text-color)
+  color: var(--c-text-color);
 }
 
 .outlined {
@@ -79,9 +89,8 @@
   margin: 0;
 }
 
-
 .disabled {
   pointer-events: none;
-  opacity: .5;
+  opacity: 0.5;
   /* visibility: hidden; */
 }
