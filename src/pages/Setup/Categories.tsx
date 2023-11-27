@@ -304,6 +304,12 @@ export default function CategoriesPage() {
     }
   }
 
+  function handleClearClick() {
+    localforage.setItem("preference-categories", []).then(() => {
+      setSelectedCategories([]);
+    });
+  }
+
   return (
     <>
       <Header>
@@ -312,7 +318,9 @@ export default function CategoriesPage() {
       <MainLayout>
         <p>Choose some categories to get started!</p>
         <TextInput onChange={onChangeCallback} inputRef={inputRef} placeholder="Search..." />
-
+        <Button variant="outlined" onClick={handleClearClick}>
+          Clear All
+        </Button>
         {filteredCategories.map((category) => (
           <Button
             key={category}
