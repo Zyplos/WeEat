@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
+import localforage from "localforage";
 import { RouterButton } from "../../components/Button";
 import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
+import FloatingFooter from "../../components/FloatingFooter";
 
 // import IntroImage from "../../assets/intro-picture.svg";
 
@@ -32,14 +35,82 @@ const ProfileIcon = (
   </svg>
 );
 
+type keyStringType = {
+  [key: string]: string;
+};
+
+const miniHeaderStyle = {
+  fontSize: "1.2rem",
+  fontWeight: 500,
+  marginBottom: "0",
+};
+
+const timeFriendlyText: keyStringType = {
+  "5": "5 minutes",
+  "10": "10 minutes",
+  "15": "15 minutes",
+  "20": "20 minutes",
+  "25": "25 minutes",
+  "30": "30 minutes",
+  "35": "35 minutes",
+  "40": "40 minutes",
+  "45": "45 minutes",
+  "50": "50 minutes",
+  "55": "55 minutes",
+  "1hour": "1 hour or more",
+};
+
+const budgetFriendlyText: keyStringType = {
+  "1": "$10 or less",
+  "2": "$20 or less",
+  "3": "$30 or less",
+  "4": "$40 or less",
+  "5": "$50 or less",
+  "100": "$100 or less",
+  "100+": "Over $100",
+};
+
+const transportFriendlyText: keyStringType = {
+  car: "Car",
+  walking: "Walking",
+  biking: "Biking",
+};
+
 export default function PreferencesIndex() {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [transport, setTransport] = useState<string>("");
+  const [budget, setBudget] = useState<string>("");
+  const [time, setTime] = useState<string>("");
+
+  useEffect(() => {
+    localforage.getItem("preference-categories").then((value) => setCategories((value as string[]) || []));
+    localforage.getItem("preference-transport").then((value) => setTransport(value as string));
+    localforage.getItem("preference-budget").then((value) => setBudget(value as string));
+    localforage.getItem("preference-time").then((value) => setTime(value as string));
+  }, []);
+
   return (
     <>
       <Header>
-        <h1>Edit Preferences</h1>
+        <h1>Preferences</h1>
       </Header>
       <MainLayout>
-        <p>Change your settings here.</p>
+        <section>
+          <p style={miniHeaderStyle}>Food Preferences:</p>
+          <p>{categories.join(", ")}</p>
+
+          <p style={miniHeaderStyle}>Mode of Transport:</p>
+          <p>{transportFriendlyText[transport]}</p>
+
+          <p style={miniHeaderStyle}>Budget:</p>
+          <p>{budgetFriendlyText[budget]}</p>
+
+          <p style={miniHeaderStyle}>Available Time:</p>
+          <p>{timeFriendlyText[time]}</p>
+        </section>
+
+        <h2 style={{ fontSize: "1.3rem" }}>Edit Preferences</h2>
+        <p>Change your preferences here.</p>
         <RouterButton icon={PreferencesIcon} to="/preferences/categories">
           Food Preferences
         </RouterButton>
@@ -55,10 +126,13 @@ export default function PreferencesIndex() {
         <RouterButton icon={ProfileIcon} to="/groups/create/profile">
           Edit Group Profile
         </RouterButton>
+      </MainLayout>
+
+      <FloatingFooter>
         <RouterButton to="/map" variant="outlined">
           Back to Map
         </RouterButton>
-      </MainLayout>
+      </FloatingFooter>
     </>
   );
 }
