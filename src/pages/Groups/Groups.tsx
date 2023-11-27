@@ -208,10 +208,12 @@ const dummyGroups: Group[] = [
       {
         name: "Angel",
         img: "image1",
+        vote: 1,
       },
       {
         name: "Michael",
         img: "image2",
+        vote: 2,
       },
     ],
     preferences: {
@@ -229,10 +231,12 @@ const dummyGroups: Group[] = [
       {
         name: "Kenan",
         img: "image6",
+        vote: 1,
       },
       {
         name: "Frank",
         img: "image3",
+        vote: 1,
       },
     ],
     preferences: {

@@ -4,6 +4,7 @@
   background-color: var(--c-item-background);
   padding: var(--space-xl);
   margin-bottom: var(--space-l);
+  position: relative;
 }
 
 .active {

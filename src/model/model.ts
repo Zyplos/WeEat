@@ -11,6 +11,7 @@ export interface Group {
 export interface Member {
     img: string,
     name: string,
+    vote: number | any,
 }
 
 export interface Preferences {

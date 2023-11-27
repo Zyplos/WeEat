@@ -13,8 +13,8 @@
 
 .place {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: -2.5%;
+  top: -2.5%;
   width: 3rem;
   height: 3rem;
   /* transform: translate(-50%, -50%); */
@@ -28,8 +28,10 @@
   font-size: var(--text-xs);
 }
 
+
 .gold.place {
   background-color: var(--c-gold);
+  color: var(--c-text-color);
   z-index: 9999999;
 }
 
@@ -42,7 +44,13 @@
 .bronze.place {
   background-color: var(--c-bronze);
   /* z-index: 97; */
+  color: var(--c-text-color);
   z-index: 9999997;
+}
+
+.other {
+  margin-top: var(--space-xl);
+  font-size: var(--text-l);
 }
 
 .gold {
@@ -92,4 +100,9 @@
   background-color: var(--c-item-hover);
   color: var(--c-item-text);
   border: var(--fieldBorderWidth) solid var(--c-item-hover);
+}
+
+
+.mb-m {
+  margin-bottom: var(--space-m) !important;
 }
