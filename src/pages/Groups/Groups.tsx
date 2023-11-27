@@ -405,21 +405,22 @@ const allImgs = new Array(6).fill("");
 export function CreateProfile() {
   const inputRef = useRef<HTMLInputElement>();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [selectedImg, setSelectedImg] = useState(1);
 
   useEffect(() => {
     const name = localStorage.getItem("name");
+    inputRef.current!.value = name!;
 
     if (name) {
-      navigate("/groups");
+      // navigate("/groups");
     } else {
       localStorage.setItem("img", "image1");
     }
   }, []);
 
   const onChangeCallback = () => {
-    const newName: string = inputRef.current?.value!;
+    const newName: string = inputRef.current!.value;
 
     localStorage.setItem("name", newName);
   };
@@ -436,13 +437,14 @@ export function CreateProfile() {
   return (
     <>
       <Header>
-        <h1>Create Profile</h1>
+        <h1>Group Profile</h1>
       </Header>
       <MainLayout>
-        <label>Input your name!</label>
+        <p>Please enter a name that will be shown to people in other groups.</p>
+        <label>Your Name</label>
         <TextInput onChange={onChangeCallback} inputRef={inputRef} placeholder="Name" />
 
-        <label>Select a profile photo!</label>
+        <label>Select a profile photo</label>
         <div className={styles["img-box"]} onClick={chooseImage}>
           {allImgs.map((_, i: number) => {
             console.log(i);
@@ -465,9 +467,15 @@ export function CreateProfile() {
       </MainLayout>
 
       <FloatingFooter>
-        <RouterButton to="/groups" nospacing>
-          Next
-        </RouterButton>
+        {localStorage.getItem("name") ? (
+          <RouterButton to="/preferences" nospacing>
+            Done
+          </RouterButton>
+        ) : (
+          <RouterButton to="/groups" nospacing>
+            Next
+          </RouterButton>
+        )}
       </FloatingFooter>
     </>
   );

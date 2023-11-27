@@ -132,3 +132,9 @@ body,
 #root {
   background-color: var(--c-main-background);
 }
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: var(--baseTextSize);
+}
