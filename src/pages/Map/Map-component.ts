@@ -147,6 +147,12 @@ export class MapComponent extends LitElement {
     }
   }
 
+  placeLocationsAsMarkers() {
+    for (let i = 0; i < this.locations.length; i++) {
+      this.checkIfLocExists(this.locations[i], i);
+    }
+  }
+
   makeRequest(newRequest: any) {
     console.log("newRequest", newRequest);
 
@@ -158,9 +164,7 @@ export class MapComponent extends LitElement {
 
         this.insertLocationsIntoLF();
 
-        for (let i = 0; i < this.locations.length; i++) {
-          this.checkIfLocExists(this.locations[i], i);
-        }
+        this.placeLocationsAsMarkers();
 
         (this.renderRoot as DocumentFragment).getElementById("map-loading-ui")!.style.display = "none";
       } else {
@@ -271,10 +275,24 @@ export class MapComponent extends LitElement {
     }
   }
 
-  startApp() {
+  async startApp() {
     this.map.setCenter(this.center);
     this.setMarker("You are here", this.center, null, 0);
-    this.gatherPreferences();
+
+    const dirty = localStorage.getItem("dirty")
+    if (dirty === "true") {
+      const lfLocations: string = await localforage.getItem("locations")!;
+      const data = JSON.parse(lfLocations)
+      console.log(data)
+      this.locations = data;
+
+      this.placeLocationsAsMarkers();
+
+      (this.renderRoot as DocumentFragment).getElementById("map-loading-ui")!.style.display = "none"; 
+
+    } else {
+      this.gatherPreferences();
+    }
   }
 
   getCurrentPosition() {

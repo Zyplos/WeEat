@@ -58,44 +58,79 @@ const getImg = (imgName: string, key: number) => {
   }
 };
 
+function sortMe(a: any, b: any) {
+  return b.voteCount - a.voteCount;
+}
+
 export default function ListView() {
   const [locations, setLocations] = useState([]);
   const [groupsData, setGroupsData] = useState<GroupsData>();
+  const [locationReorder, setLocationsReorder] = useState<Boolean>(false);
+  const [onMount, setOnMount] = useState<Boolean>(false);
 
   useEffect(() => {
-    const localmembers = localStorage.getItem("members");
-    if (!localmembers) return;
-
-    const members = JSON.parse(localmembers);
-
-    // we must map the location vote to the actual location
-    members.forEach((member: Member) => {
-      member.vote = locations[member.vote - 1];
-    });
-
-    if (members) {
-      setGroupsData({
-        infoParagraph: "Everyone else is also choosing",
-        voteButton: true,
-        members: members,
-      });
-    }
+    if (onMount) return;
   }, [locations]);
-
+  
+  // once you make vote, reorder locations based on vote
+  useEffect(() => {
+    if (!locationReorder) return;
+    
+    locations.forEach((location: any) => location.voteCount = 0);
+    
+    locations.forEach((location: any) => {
+      groupsData?.members.forEach((member: Member) => {
+        if (member.vote?.vicinity === location.vicinity) {
+          location.voteCount+=1;
+        }
+      }) 
+    });
+    locations.sort(sortMe)
+    
+    localforage.setItem("locations", JSON.stringify(locations));
+    setLocations([...locations])
+    setLocationsReorder(false)
+    
+  }, [groupsData])
+  
   useEffect(() => {
     const fetchLocations = async () => {
+      let locationParsedData: any;
       try {
         const data: any = await localforage.getItem("locations");
-        const parsedData = JSON.parse(data || []);
-
-        setLocations(parsedData);
-      } catch (err) {}
+         locationParsedData = JSON.parse(data || []);
+        
+        setLocations(locationParsedData);
+      } catch (err) {} finally {
+        const localmembers = localStorage.getItem("members");
+        if (!localmembers) return;
+    
+    
+        const members = JSON.parse(localmembers);
+    
+        const dirty = localStorage.getItem("dirty");
+        if (dirty !== "true") {
+          // we must map the location vote to the actual location
+          members.forEach((member: Member) => {
+            member.vote = locationParsedData[member.vote - 1];
+          });
+        }
+    
+        if (members) {
+          setGroupsData({
+            infoParagraph: "Everyone else is also choosing",
+            voteButton: true,
+            members: members,
+          });
+        }
+      }
     };
     fetchLocations();
+    
+
+
   }, []);
-
-  // console.log(groupsData)
-
+  
   const getPlace = (place: number): string => {
     if (place === 1) {
       return "gold";
@@ -108,6 +143,19 @@ export default function ListView() {
     return "";
   };
 
+  const hasYourVote = (location: any) => {
+    const name = localStorage.getItem("name")!;
+
+    let yourVote = false;
+    groupsData?.members.forEach((member: Member) => {
+      if (name === member.name && 
+      member.vote?.vicinity === location.vicinity) {
+        yourVote = true;
+      } 
+    });
+
+    return yourVote;
+  }
   return (
     <>
       <Header>
@@ -134,13 +182,12 @@ export default function ListView() {
                     <WidthSpaced>
                       <Title>{location.name}</Title>
                     </WidthSpaced>
-
                     <p>{location.distance.toFixed(2) + " km"}</p>
                     <p>5 minute commute time</p>
                     {groupsData ? (
                       <div className={styles["mb-m"]}>
                         {groupsData.members.map((member: Member, i: number) => {
-                          return member.vote?.name === location.name ? getImg(member.img, i) : <></>;
+                          return member.vote?.vicinity === location.vicinity ? getImg(member.img, i) : <></>;
                         })}
                       </div>
                     ) : (
@@ -150,17 +197,22 @@ export default function ListView() {
                       <WidthSpaced>
                         {groupsData?.voteButton ? (
                           <Button
-                            variant="dark"
+                            variant={hasYourVote(location) ? "disabled" : "dark"}
                             onClick={() => {
                               const name = localStorage.getItem("name")!;
 
                               groupsData.members.forEach((member: Member) => {
                                 if (member.name === name) {
                                   member.vote = location;
+                                  location.voteCount = 1;
                                 }
+
                               });
+                              localStorage.setItem("dirty", "true");
+                              localStorage.setItem("members", JSON.stringify(groupsData.members))
 
                               setGroupsData(structuredClone(groupsData));
+                              setLocationsReorder(true);
                             }}
                             nospacing
                             icon={VoteSvg}

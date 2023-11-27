@@ -98,6 +98,7 @@ export function Groups() {
 
   const leaveGroup = () => {
     localStorage.setItem("members", "");
+    localStorage.setItem("dirty", "false");
     navigate("/map");
   };
 
