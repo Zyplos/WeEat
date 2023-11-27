@@ -13,4 +13,6 @@
   display: flex;
   justify-content: space-between;
   gap: var(--space-l);
+
+  z-index: 9999999;
 }

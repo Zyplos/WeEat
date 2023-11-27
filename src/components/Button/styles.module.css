@@ -50,6 +50,11 @@
   color: var(--c-text-color);
 }
 
+.dark {
+  background-color: var(--c-main-background);
+  color: var(--c-text-color);
+}
+
 .outlined {
   border: var(--fieldBorderWidth) solid var(--c-item-background);
   background-color: transparent;

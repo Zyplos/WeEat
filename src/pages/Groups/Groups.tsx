@@ -81,15 +81,20 @@ const SearchingSvg = (
 
 export function Groups() {
   const [leaveButton, setLeaveButton] = useState<boolean>(false);
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const profileName = localStorage.getItem("name");
+    if (!profileName) {
+      navigate("/groups/create/profile");
+    }
+
     const membersStored = localStorage.getItem("members");
 
     if (membersStored) {
       setLeaveButton(true);
     }
   }, []);
-
-  const navigate = useNavigate();
 
   const leaveGroup = () => {
     localStorage.setItem("members", "");

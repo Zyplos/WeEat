@@ -56,7 +56,7 @@ export default function Map() {
         })}
       </div>
       <div id={styles["map-group-button"]}>
-        <RouterButton to="/groups/create/profile" variant="acrylic" nospacing>
+        <RouterButton to="/groups" variant="acrylic" nospacing>
           Groups
         </RouterButton>
       </div>
