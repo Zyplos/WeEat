@@ -3,7 +3,7 @@ import { customElement } from "lit/decorators.js";
 import mapComponentCss from "./map-component.css";
 import localforage from "localforage";
 
-interface Coordinates {
+export interface Coordinates {
   lat: number;
   lng: number;
 }

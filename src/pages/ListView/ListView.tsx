@@ -15,6 +15,7 @@ import image4 from "../../assets/images/people/image4.png";
 import image5 from "../../assets/images/people/image5.png";
 import image6 from "../../assets/images/people/image6.png";
 import FloatingFooter from "../../components/FloatingFooter";
+import { Coordinates } from "../Map/Map-component";
 
 // const MILES_CONVERSION = 0.62137119;
 
@@ -67,6 +68,8 @@ export default function ListView() {
   const [groupsData, setGroupsData] = useState<GroupsData>();
   const [locationReorder, setLocationsReorder] = useState<Boolean>(false);
   const [onMount, setOnMount] = useState<Boolean>(false);
+  const [center, setCenter] = useState({lat: 0, lng: 0})
+
 
   useEffect(() => {
     if (onMount) return;
@@ -124,12 +127,23 @@ export default function ListView() {
           });
         }
       }
+
+      
+      
     };
     fetchLocations();
     
-
-
+    
+    
   }, []);
+  
+  useEffect(() => {
+    const fetchGeolocation = async () => {
+      const geolocation: Coordinates = (await localforage.getItem("geolocation") as Coordinates)
+      setCenter(geolocation)
+    }
+    fetchGeolocation()
+  },[])
   
   const getPlace = (place: number): string => {
     if (place === 1) {
@@ -225,7 +239,10 @@ export default function ListView() {
                         <Button
                           variant="dark"
                           onClick={() => {
-                            window.open(`https://www.google.com/maps/dir//${location.name},${location.vicinity}`, "_blank");
+                            console.log(center)
+                            const link = `https://www.google.com/maps/dir/${center.lat},${center.lng}/${location.name},${location.vicinity}`;
+
+                            window.open(link, "_blank");
                           }}
                           nospacing
                           icon={CompassSvg}
