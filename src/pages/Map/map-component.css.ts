@@ -99,8 +99,17 @@ export default css`
   }
 
   .link {
+    display: inline-block;
     color: var(--c-text-color);
     text-decoration: none;
+    background-color: rgb(0, 0, 0);
+    margin-top: 0.3rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+  }
+
+  .link:hover {
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
   .gold span {

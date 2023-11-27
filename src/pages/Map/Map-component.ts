@@ -87,21 +87,20 @@ export class MapComponent extends LitElement {
       console.log(this.center);
       link.href = `https://www.google.com/maps/dir/${this.center.lat},${this.center.lng}/${name},${place.vicinity}`;
     }
+    link.textContent = "Directions";
 
     link.classList.add("link");
-
-    RestaurantInfoElement.appendChild(link);
 
     const nameElement = document.createElement("p");
     nameElement.classList.add("name-element");
     nameElement.textContent = name;
-    link.appendChild(nameElement);
+    RestaurantInfoElement.appendChild(nameElement);
 
     if (place) {
       RestaurantInfoElement.classList.add("place");
       const p = document.createElement("p");
       p.textContent = place.distance.toFixed(2) + " km ";
-      link.appendChild(p);
+      RestaurantInfoElement.appendChild(p);
 
       rank = rank + 1;
       const span = document.createElement("span");
@@ -115,7 +114,11 @@ export class MapComponent extends LitElement {
         RestaurantInfoElement.classList.add("bronze");
       }
 
-      link.appendChild(span);
+      RestaurantInfoElement.appendChild(span);
+    }
+
+    if (place) {
+      RestaurantInfoElement.appendChild(link);
     }
 
     return this.addMarkerElement(RestaurantInfoElement, location);
