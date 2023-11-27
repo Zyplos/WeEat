@@ -71,7 +71,7 @@ const budgetFriendlyText: keyStringType = {
 };
 
 const transportFriendlyText: keyStringType = {
-  car: "Car",
+  driving: "Car",
   walking: "Walking",
   biking: "Biking",
 };
@@ -88,6 +88,8 @@ export default function PreferencesIndex() {
     localforage.getItem("preference-budget").then((value) => setBudget(value as string));
     localforage.getItem("preference-time").then((value) => setTime(value as string));
   }, []);
+
+  console.log(transport)
 
   return (
     <>
