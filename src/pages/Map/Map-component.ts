@@ -158,7 +158,11 @@ export class MapComponent extends LitElement {
         for (let i = 0; i < this.locations.length; i++) {
           this.checkIfLocExists(this.locations[i], i);
         }
+
+        (this.renderRoot as DocumentFragment).getElementById("map-loading-ui")!.style.display = "none";
       } else {
+        (this.renderRoot as DocumentFragment).getElementById("map-loading-ui")!.style.display = "none";
+        (this.renderRoot as DocumentFragment).getElementById("map-nonefound-ui")!.style.display = "block";
         this.locations = [];
         this.insertLocationsIntoLF();
       }
@@ -326,8 +330,6 @@ export class MapComponent extends LitElement {
   render() {
     // <button class="refresh-button" style="display:none;" @click=${this.getCurrentPosition}>Refresh</button>
     return html`
-    
-  
     <a
     href="/map/list-view"
     class="list-view" style="display:none;">view</a>
@@ -337,6 +339,19 @@ export class MapComponent extends LitElement {
     height: 100vh;
     overflow: hidden;
     ">
+
+    <section class="floating-state-ui" id="map-loading-ui">
+      <div>
+      <h1>Loading...</h1>
+      </div>
+    </section>
+
+    <section class="floating-state-ui" id="map-nonefound-ui" style="display:none;">
+      <div>
+      <h1>No places found!</h1>
+      <p>Try changing your preferences to be more flexible.</p>
+      </div>
+    </section>
     
     <section id="map"
     width: 100vw;

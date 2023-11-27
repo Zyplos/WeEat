@@ -163,4 +163,25 @@ export default css`
     font-weight: bold;
     margin-bottom: var(--space-l);
   }
+
+  .floating-state-ui {
+    position: absolute;
+    width: var(--dev-mobile-width);
+    height: 100vh;
+    z-index: 9999999;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3xl) var(--space-2xl);
+    gap: var(--space-l);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
+  }
+
+  .floating-state-ui > div {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: var(--space-l);
+    width: 300px;
+  }
 `;
