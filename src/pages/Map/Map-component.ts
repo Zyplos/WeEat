@@ -181,11 +181,10 @@ export class MapComponent extends LitElement {
       marker = await this.setMarker(place.name, place.geometry.location, place, rank);
     } catch (e) {
     } finally {
-      google.maps.event.addListener(marker!, "click", () => {
-
+      google.maps.event.addListener(marker!, "click", (e: any) => {
 
        let width = window.innerWidth;
-        if (width < 600) {
+        if (width < 600 && e.domEvent.target.nodeName === "A") {
           window.open(this.createLink(place.name, place), "_blank");
         }
       });
