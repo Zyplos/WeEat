@@ -184,7 +184,7 @@ export class MapComponent extends LitElement {
       google.maps.event.addListener(marker!, "click", (e: any) => {
 
        let width = window.innerWidth;
-        if (width < 600 && e.domEvent.target.nodeName === "A") {
+        if (width < 600) {
           window.open(this.createLink(place.name, place), "_blank");
         }
       });
