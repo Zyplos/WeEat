@@ -80,17 +80,16 @@ export class MapComponent extends LitElement {
     if (!localmembers) return;  //if theres no members, group
     // functionality is not present
     if (!place) return;
+    console.log("ADD VOTES")
 
     const VotesContainer: HTMLDivElement = document.createElement("div");
     VotesContainer.classList.add("flex-row")
 
     let hasVotes = false;
-
     const members = JSON.parse(localmembers);
 
     members.forEach((member: Member) => {
-      
-      if (member.vote.vicinity === place.vicinity) {   
+      if (member.vote?.vicinity === place?.vicinity) {   
         if (member.name === localStorage.getItem("name")!) {  // "YOUR CHOICE"
           const yourChoice = document.createElement("span");
           yourChoice.classList.add("your-choice")
@@ -106,9 +105,6 @@ export class MapComponent extends LitElement {
 
         img.src = `people/${member.img}.png`
         img.style.width = "1.6rem"
-
-
-        console.log(" I VOTED FOR THIS")
       }
 
     })
@@ -129,17 +125,14 @@ export class MapComponent extends LitElement {
     const RestaurantInfoElement = document.createElement("div");
     RestaurantInfoElement.classList.add("here");
     const link = document.createElement("a");
-
-    console.log(place);
+  
     link.target = "_blank";
     if (place) {
-      console.log(this.center);
       link.href = `https://www.google.com/maps/dir/${this.center.lat},${this.center.lng}/${name},${place.vicinity}`;
     }
+
     link.textContent = "Directions";
-
     link.classList.add("link");
-
     
     const nameElement = document.createElement("p");
     nameElement.classList.add("name-element");
@@ -170,6 +163,7 @@ export class MapComponent extends LitElement {
     if (place) {
       RestaurantInfoElement.appendChild(link);
     }
+    
     this.addVotesToMarker(place, RestaurantInfoElement);
     
     return this.addMarkerElement(RestaurantInfoElement, location);
@@ -369,6 +363,7 @@ export class MapComponent extends LitElement {
     } finally {
       if (geolocation) {
         this.center = geolocation as Coordinates;
+        console.log("START APP")
         this.startApp();
         return;
       }
