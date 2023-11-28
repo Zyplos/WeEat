@@ -53,6 +53,7 @@ export default css`
   .place {
     text-align: left;
     font-size: 12px !important;
+  
   }
 
   .here {
@@ -64,6 +65,7 @@ export default css`
     border-radius: 10px;
     backdrop-filter: blur(10px);
     transform: translateY(-10px);
+    cursor: default;
   }
   .here::after {
     content: "";
@@ -128,8 +130,13 @@ export default css`
     margin-top: 0.3rem;
     padding: 0.3rem;
     border-radius: 1rem;
-    width: 100%;
-    text-align: center;
+  }
+  
+  @media (max-width: 47em) {
+    .link {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .link:hover {

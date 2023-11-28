@@ -118,6 +118,10 @@ export class MapComponent extends LitElement {
   }
 
 
+  createLink(name: string, place: any) {
+    return `https://www.google.com/maps/dir/${this.center.lat},${this.center.lng}/${name},${place.vicinity}`; 
+  }
+
   // place is the object
   // name is string
   async setMarker(name: string, location: Coordinates, place: any, rank: number) {
@@ -128,7 +132,7 @@ export class MapComponent extends LitElement {
   
     link.target = "_blank";
     if (place) {
-      link.href = `https://www.google.com/maps/dir/${this.center.lat},${this.center.lng}/${name},${place.vicinity}`;
+      link.href = this.createLink(name, place)
     }
 
     link.textContent = "Directions";
@@ -177,7 +181,14 @@ export class MapComponent extends LitElement {
       marker = await this.setMarker(place.name, place.geometry.location, place, rank);
     } catch (e) {
     } finally {
-      google.maps.event.addListener(marker!, "click", () => {});
+      google.maps.event.addListener(marker!, "click", () => {
+
+
+       let width = window.innerWidth;
+        if (width < 600) {
+          window.open(this.createLink(place.name, place), "_blank");
+        }
+      });
     }
   }
 
