@@ -128,6 +128,8 @@ export default css`
     margin-top: 0.3rem;
     padding: 0.3rem;
     border-radius: 1rem;
+    width: 100%;
+    text-align: center;
   }
 
   .link:hover {
