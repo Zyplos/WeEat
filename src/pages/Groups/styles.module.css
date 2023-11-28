@@ -83,6 +83,7 @@
     display: flex;
     gap: var(--space-s);
     margin-bottom: var(--space-m);
+    flex-wrap: wrap;
 }
 
 .img-box img {
