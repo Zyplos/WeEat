@@ -103,7 +103,7 @@ export class MapComponent extends LitElement {
 
         VotesContainer.style.marginTop = "var(--space-s)"
 
-        img.src = `people/${member.img}.png`
+        img.src = `${member.img}.png`
         img.style.width = "1.6rem"
       }
 
@@ -324,9 +324,12 @@ export class MapComponent extends LitElement {
     this.map.setCenter(this.center);
     this.setMarker("You are here", this.center, null, 0);
 
-    const members = JSON.parse(localStorage.getItem("members")!)
+    const membersJSON = localStorage.getItem("members")!
 
-    if (members) {
+
+    if (membersJSON) {
+      let members = JSON.parse(membersJSON)
+
       const lfLocations: string = await localforage.getItem("locations")!;
       const data = JSON.parse(lfLocations)
       this.locations = data;
