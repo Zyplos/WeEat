@@ -324,12 +324,22 @@ export class MapComponent extends LitElement {
     this.map.setCenter(this.center);
     this.setMarker("You are here", this.center, null, 0);
 
-    const dirty = localStorage.getItem("dirty")
-    if (dirty === "true") {
+    const members = JSON.parse(localStorage.getItem("members")!)
+
+    if (members) {
       const lfLocations: string = await localforage.getItem("locations")!;
       const data = JSON.parse(lfLocations)
-      console.log(data)
       this.locations = data;
+
+      const dirty = localStorage.getItem("dirty")
+      if (dirty !== "true") {
+        members.forEach((member: Member) => {
+          member.vote = this.locations[member.vote - 1];
+        });
+        localStorage.setItem("members", JSON.stringify(members))
+      }
+
+      localStorage.setItem("dirty", "true");
 
       this.placeLocationsAsMarkers();
 
