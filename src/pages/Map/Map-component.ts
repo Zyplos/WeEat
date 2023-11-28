@@ -333,13 +333,14 @@ export class MapComponent extends LitElement {
 
       const dirty = localStorage.getItem("dirty")
       if (dirty !== "true") {
+        console.log("set dirty")
         members.forEach((member: Member) => {
           member.vote = this.locations[member.vote - 1];
         });
         localStorage.setItem("members", JSON.stringify(members))
+        localStorage.setItem("dirty", "true");
       }
 
-      localStorage.setItem("dirty", "true");
 
       this.placeLocationsAsMarkers();
 
