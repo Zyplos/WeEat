@@ -138,3 +138,10 @@ label {
   margin-bottom: 0.5rem;
   font-size: var(--baseTextSize);
 }
+
+/* media query for devices with widths less than 500px */
+@media (max-width: 500px) {
+  :root {
+    --baseTextSize: 0.87rem;
+  }
+}
