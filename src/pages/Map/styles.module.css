@@ -117,22 +117,26 @@ body {
   position: absolute;
   top: var(--space-m);
   right: var(--space-m);
+  z-index: 999999;
 }
 
 #map-button-list-view {
   position: absolute;
   bottom: 4rem;
   left: var(--space-m);
+  z-index: 999999;
 }
 
 #map-group-button {
   position: absolute;
   top: var(--space-m);
   left: var(--space-m);
+  z-index: 999999;
 }
 
 
 #group-members {
+  z-index: 999999;
   position: absolute;
   top: var(--space-3xl);
   left: var(--space-m);
