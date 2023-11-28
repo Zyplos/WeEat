@@ -43,19 +43,28 @@ const settingsIcon = (
   </svg>
 );
 
-const getImg = (imgName: string, key: number) => {
+const getImg = (imgName: string, key: number, memberName: string) => {
+  let extraClass = {};
+  if (memberName === localStorage.getItem("name")!) {
+    console.log("HELLO")
+    extraClass = {
+      borderRadius: "50%",
+      boxShadow: "0 0 0 2px rgb(222 0 0)",
+    }
+  }
+
   if (imgName === "image1") {
-    return <img src={image1} key={String(key)} />;
+    return <img style={extraClass} src={image1} key={String(key)} />;
   } else if (imgName === "image2") {
-    return <img src={image2} key={String(key)} />;
+    return <img style={extraClass} src={image2} key={String(key)} />;
   } else if (imgName === "image3") {
-    return <img src={image3} key={String(key)} />;
+    return <img style={extraClass} src={image3} key={String(key)} />;
   } else if (imgName === "image4") {
-    return <img src={image4} key={String(key)} />;
+    return <img style={extraClass} src={image4} key={String(key)} />;
   } else if (imgName === "image5") {
-    return <img src={image5} key={String(key)} />;
+    return <img style={extraClass} src={image5} key={String(key)} />;
   } else if (imgName === "image6") {
-    return <img src={image6} key={String(key)} />;
+    return <img style={extraClass} src={image6} key={String(key)} />;
   }
 };
 
@@ -201,7 +210,7 @@ export default function ListView() {
                     {groupsData ? (
                       <div className={styles["mb-m"]}>
                         {groupsData.members.map((member: Member, i: number) => {
-                          return member.vote?.vicinity === location.vicinity ? getImg(member.img, i) : <></>;
+                          return member.vote?.vicinity === location.vicinity ? getImg(member.img, i, member.name) : <></>;
                         })}
                       </div>
                     ) : (

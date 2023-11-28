@@ -4,7 +4,6 @@ import Header from "../../components/Header";
 import MainLayout from "../../components/MainLayout";
 import { Card, ClickableCard, EventCard, Title } from "../../components/Card";
 import WidthSpaced from "../../components/WidthSpaced";
-import { Conn } from "../../ws";
 import { Group, GroupState, Member, Message, MessageType, Preferences } from "../../model/model";
 import { nanoid } from "nanoid";
 import { TextInput } from "../../components/Forms";

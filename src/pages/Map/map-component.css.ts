@@ -93,7 +93,11 @@ export default css`
 
   .flex-row {
     display: flex;
-    gap: var(--space-s);
+  }
+
+  .flex-row img {
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0);
   }
 
   .rank {

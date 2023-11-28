@@ -79,7 +79,8 @@ export class MapComponent extends LitElement {
     const localmembers = localStorage.getItem("members");
     if (!localmembers) return;  //if theres no members, group
     // functionality is not present
-    
+    if (!place) return;
+
     const VotesContainer: HTMLDivElement = document.createElement("div");
     VotesContainer.classList.add("flex-row")
 
@@ -100,11 +101,10 @@ export class MapComponent extends LitElement {
         hasVotes = true;     
         const img: HTMLImageElement = document.createElement("img");
         VotesContainer.appendChild(img);
-      
 
         VotesContainer.style.marginTop = "var(--space-s)"
 
-        img.src = `src/assets/images/people/${member.img}.png`
+        img.src = `people/${member.img}.png`
         img.style.width = "1.6rem"
 
 
