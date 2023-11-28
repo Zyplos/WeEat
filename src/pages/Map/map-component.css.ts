@@ -78,6 +78,24 @@ export default css`
     clip-path: polygon(100% 0, 0 0, 50% 100%);
   }
 
+  .your-choice {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    padding: var(--textFrameY) var(--textFrameX);
+
+    backdrop-filter: blur(10px);
+    background-color: #b28136D0 !important;
+    color: var(--c-text-color);
+    border-radius: var(--radius);
+  }
+
+  .flex-row {
+    display: flex;
+    gap: var(--space-s);
+  }
+
   .rank {
     position: absolute;
     right: 0;

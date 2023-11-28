@@ -2,6 +2,8 @@ import { html, LitElement } from "lit";
 import { customElement } from "lit/decorators.js";
 import mapComponentCss from "./map-component.css";
 import localforage from "localforage";
+import { Member } from "../../model/model";
+import { createElement } from "react";
 
 export interface Coordinates {
   lat: number;
@@ -73,6 +75,53 @@ export class MapComponent extends LitElement {
     } catch (e) {}
   }
 
+  addVotesToMarker(place: any,  RestaurantInfoElement: HTMLDivElement) {
+    const localmembers = localStorage.getItem("members");
+    if (!localmembers) return;  //if theres no members, group
+    // functionality is not present
+    
+    const VotesContainer: HTMLDivElement = document.createElement("div");
+    VotesContainer.classList.add("flex-row")
+
+    let hasVotes = false;
+
+    const members = JSON.parse(localmembers);
+
+    members.forEach((member: Member) => {
+      
+      if (member.vote.vicinity === place.vicinity) {   
+        if (member.name === localStorage.getItem("name")!) {  // "YOUR CHOICE"
+          const yourChoice = document.createElement("span");
+          yourChoice.classList.add("your-choice")
+          yourChoice.textContent = "Your Choice";
+          RestaurantInfoElement.appendChild(yourChoice)
+        }
+
+        hasVotes = true;     
+        const img: HTMLImageElement = document.createElement("img");
+        VotesContainer.appendChild(img);
+      
+
+        VotesContainer.style.marginTop = "var(--space-s)"
+
+        img.src = `src/assets/images/people/${member.img}.png`
+        img.style.width = "1.6rem"
+
+
+        console.log(" I VOTED FOR THIS")
+      }
+
+    })
+
+    if (hasVotes) {
+      RestaurantInfoElement.appendChild(VotesContainer)
+    }
+
+    console.log(members)
+
+  }
+
+
   // place is the object
   // name is string
   async setMarker(name: string, location: Coordinates, place: any, rank: number) {
@@ -91,17 +140,18 @@ export class MapComponent extends LitElement {
 
     link.classList.add("link");
 
+    
     const nameElement = document.createElement("p");
     nameElement.classList.add("name-element");
     nameElement.textContent = name;
     RestaurantInfoElement.appendChild(nameElement);
-
+    
     if (place) {
       RestaurantInfoElement.classList.add("place");
       const p = document.createElement("p");
       p.textContent = place.distance.toFixed(2) + " km ";
       RestaurantInfoElement.appendChild(p);
-
+      
       rank = rank + 1;
       const span = document.createElement("span");
       span.innerText = "" + rank;
@@ -113,21 +163,22 @@ export class MapComponent extends LitElement {
       } else if (rank === 3) {
         RestaurantInfoElement.classList.add("bronze");
       }
-
+      
       RestaurantInfoElement.appendChild(span);
     }
-
+    
     if (place) {
       RestaurantInfoElement.appendChild(link);
     }
-
+    this.addVotesToMarker(place, RestaurantInfoElement);
+    
     return this.addMarkerElement(RestaurantInfoElement, location);
   }
-
+  
   async checkIfLocExists(place: any, rank: any) {
     if (!place.geometry || !place.geometry.location) return;
     let marker;
-
+    
     try {
       marker = await this.setMarker(place.name, place.geometry.location, place, rank);
     } catch (e) {
