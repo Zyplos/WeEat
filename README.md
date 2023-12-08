@@ -1,5 +1,10 @@
 # WeEat
 
+<p align="center">
+  <img src="./screenshot1.png" width="300" />
+  <img src="./screenshot2.png" width="300" />
+</p>
+
 This project was created for the University of Illinois Chicago's CS 422: User Interface Design and Programming class.
 
 WeEat is a web application that allows people to find places to eat based on their food preferences, time, and budget. If you're ever in a hurry or want to explore new places to eat at, this is the app for you!
